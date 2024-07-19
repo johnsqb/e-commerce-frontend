@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { startTransition } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+// Import Bootstrap CSS
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
+// // Import Bootstrap JavaScript
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+import { store } from './redux/app/Store';
+const a = <div>Hello</div>
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}> 
     <App />
+    </Provider>
   </React.StrictMode>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
