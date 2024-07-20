@@ -47,7 +47,7 @@ const Cart = () => {
        ))
       return (
         <div>
-    <h2>Cart</h2>
+    <h2>Carts</h2>
     <Swiper
         
         pagination={{clickable:true}}
