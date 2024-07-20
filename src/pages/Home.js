@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Blog from "../components/Blog";
 import Footer from "../components/Footer";
 import LatestPost from "../components/LatestPost";
@@ -8,8 +9,12 @@ import ShopPro from "../components/ShopPro";
 import Subscribe from "../components/Subscribe";
 import Watchpro from "../components/Watchpro";
 import YearlySale from "../components/YearlySale";
-import Insta from "./Insta";
+import Insta from "../pages/Insta";
+
+
 const Home = () => {
+
+  
    
   
   return (  

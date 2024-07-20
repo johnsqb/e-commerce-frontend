@@ -1,6 +1,18 @@
 import React from 'react'
+import { useSelector,useDispatch } from 'react-redux';
+import {logout} from '../redux/Reducers/auth/authSlice'
 
 const Navbar = () => {
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
+
+  const handleLogout = () => {
+    // Dispatch logout action
+    console.log("logout");
+    dispatch(logout());
+
+  };
 
   
   return (
@@ -85,11 +97,14 @@ const Navbar = () => {
                         </a>
                       </li>
                       <li className="pe-3">
-                        <a href="/user">
+                        {!isAuthenticated?(
+                        <a href="/login">
                           <svg className="user">
                             <use xlinkHref="#user"></use>
                           </svg>
-                        </a>
+                        </a>):
+                        (<button onClick={handleLogout}>logout </button>)
+}
                       </li>
                       <li>
                         <a href="/cart">
