@@ -27,7 +27,7 @@ const Login = () => {
   };
   if (isAuthenticated) {
     console.log("welcome ", username);
-    return <Navigate to="/" />;
+    return <Navigate to="/"/>;
   }
 
   

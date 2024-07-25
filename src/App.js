@@ -16,7 +16,13 @@ import Cart from './pages/Cart.js';
 import Footer from './components/Footer.js';
 import Login from './pages/Login.js';
 
+import JwtDecode from './redux/utils/JwtDecode.js';
+import Layout from './Layout.js';
+import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
 function App() {
+
+  const token = sessionStorage.getItem('JwtToken');
+  
    
   useEffect(() => {
     
@@ -59,31 +65,49 @@ function App() {
   
   return (
 
-   
     <BrowserRouter>
-    <div>
-    
-    <Navbar/>
-
-    <main className='main-content'>
     <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route 
+            path='/product-details/:id' 
+            element={<ProtectedRoutes allowedRoles={['ROLE_USER']} />}
+          >
+            <Route index element={<ProductView />} />
+          </Route>
+          <Route 
+            path='/cart' 
+            element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_USER']} />}
+          >
+            <Route index element={<Cart />} />
+          </Route>
+        <Route path='/login' element={<Login />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+   
+    // <BrowserRouter>
+  
+    // <Routes>
 
-      <Route path='/' element={<Home/>}/>
-      <Route path='/product-details/:id' element={<ProductView/>}/>
-      <Route path='/cart' element={<Cart/>}/>
-      <Route path='/login' element={<Login/>}/>
+    //   <Route path='/' element={<Layout/>}>
+    //   <Route index  element={<Home/>}/>
+    //   {/* <Route
+    //         path='/product-details/:id'
+    //         element={
+    //           <ProtectedRoutes
+    //             element={<ProductView />} 
+    //             allowedRoles={['ROLE_SELLER']} 
+    //           />
+    //         }
+    //       /> */}
+    //   <Route path='/product-details/:id' element={<ProductView/>}/>
+    //   <Route path='/cart' element={<Cart/>}/>
+    //   <Route path='/login' element={<Login/>}/>
+    //   </Route>
 
-
- 
-      </Routes>
-
-      </main>
-
-
-
-
-      </div>
-    </BrowserRouter>
+    // </Routes>
+    // </BrowserRouter>
       
     
   );

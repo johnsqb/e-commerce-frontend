@@ -1,18 +1,50 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
-import {logout} from '../redux/Reducers/auth/authSlice'
+import {logout,authSuccess} from '../redux/Reducers/auth/authSlice'
+import { Link, Navigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+import { useState,useEffect } from 'react';
 
 const Navbar = () => {
+
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const [redirectToHome, setRedirectToHome] = useState(false);
+
+  console.log(isAuthenticated);
+  const [username,setUsername] = useState('')
+
+  
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+
+    const jwtoken = sessionStorage.getItem('jwtToken');
+
+    if(jwtoken){
+
+        const decode=jwtDecode(jwtoken);
+        console.log(decode);
+        setUsername(decode.sub);
+        dispatch(authSuccess({token:jwtoken}));
+    }
+
+
+},[dispatch])
 
   const handleLogout = () => {
-    // Dispatch logout action
-    console.log("logout");
-    dispatch(logout());
 
-  };
+    // Dispatch logout action
+    dispatch(logout());
+    window.location.href = "/"; // Forces a page reload to ensure Navbar is displayed
+
+
+};
+
+
+
+
+   
+  
 
   
   return (
@@ -96,6 +128,7 @@ const Navbar = () => {
                           </svg>
                         </a>
                       </li>
+                      
                       <li className="pe-3">
                         {!isAuthenticated?(
                         <a href="/login">
@@ -103,11 +136,14 @@ const Navbar = () => {
                             <use xlinkHref="#user"></use>
                           </svg>
                         </a>):
-                        (<button onClick={handleLogout}>logout </button>)
-}
+                        (   <>
+                          <span>Hi,{username  }</span>
+                          <button onClick={handleLogout} >Logout</button>
+                        </>)
+}   
                       </li>
                       <li>
-                        <a href="/cart">
+                        <a href="/cart" as={Link}>
                           <svg className="cart">
                             <use xlinkHref="#cart"></use>
                           </svg>

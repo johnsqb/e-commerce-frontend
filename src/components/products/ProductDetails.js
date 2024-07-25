@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 
 const ProductDetails = (props) => {
 
+  // const navigate = useNavigate();
+  // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  // const token = sessionStorage.getItem('jwtToken');
 
-  const productDetails= ()=>{
+  // const productDetails= ()=>{
 
       
-  }
+  // }
   return (
     <div>
         <div className="card-detail d-flex justify-content-between align-items-baseline pt-3">

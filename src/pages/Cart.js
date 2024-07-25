@@ -21,7 +21,7 @@ const Cart = () => {
   
     const productsincart = useSelector(state=> state.cart)
 
-    console.log(productsincart);
+     console.log(productsincart);
 
     const card = productsincart.map((product)=>(
 

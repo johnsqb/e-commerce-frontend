@@ -83,7 +83,6 @@ const Home = () => {
       
       <Insta/>
       
-      <Footer/>
     </div>
     );
 }

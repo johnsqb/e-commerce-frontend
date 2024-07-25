@@ -1,13 +1,14 @@
 // authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
+import { jwtDecode } from 'jwt-decode';
 const storedToken = sessionStorage.getItem('jwtToken');
 
 const initialState = {
   token:storedToken,
   isAuthenticated: !!storedToken,
   loading: false,
+  username: storedToken ? jwtDecode(storedToken).username : '',
   error: null,
 };
 
@@ -20,10 +21,14 @@ const authSlice = createSlice({
       state.error = null;
     },
     authSuccess(state, action) {
+      const decodedToken = jwtDecode(action.payload.token);
       state.loading = false;
       state.error = null;
       state.isAuthenticated = true;
       state.token = action.payload.token;
+      state.username = decodedToken.username;
+
+
     },
     authFail(state, action) {
       state.loading = false;

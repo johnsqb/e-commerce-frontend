@@ -1,6 +1,6 @@
 import { configureStore} from '@reduxjs/toolkit'
  import productReducer from '../Reducers/product/ProductSlice'
-import cartReducer from '../Reducers/cart/CartSlice';
+import cartReducer from '../Reducers/cart/cartSlice';
 import authReducer from '../Reducers/auth/authSlice'
 
 const storedToken = sessionStorage.getItem('jwtToken');
