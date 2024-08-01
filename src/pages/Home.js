@@ -4,11 +4,16 @@ import LatestPost from "../components/LatestPost";
 import Mobilepro from "../components/Mobilepro";
 import Navbar from "../components/Navbar";
 import Service from "../components/Service";
-import ShopPro from "../components/ShopPro";
+// import ShopPro from "../components/ShopPro";
 import Subscribe from "../components/Subscribe";
 import Watchpro from "../components/Watchpro";
 import YearlySale from "../components/YearlySale";
 import Insta from "./Insta";
+import Apps from "../components/product-carousel";
+import { Carousel } from "bootstrap";
+import MultiCarousell from "../components/prdcarousel";
+import MultiCarousells from "../components/productsss";
+import Prds from "../components/productsss";
 const Home = () => {
    
   
@@ -59,24 +64,28 @@ const Home = () => {
 
     
 
-      <ShopPro/>
-
-      <Service/>
+      {/* <ShopPro/> */}
+      <MultiCarousell/>
+      <Apps/>
+     
+     <MultiCarousell/>
+     <Prds/>
+      {/* <Service/> */}
 
       <Mobilepro name={"Mobile products"} parent={3}/>
 
       <Mobilepro name={" Smart watches" } parent={1}/>
 
 
-      <YearlySale/>
+      {/* <YearlySale/> */}
       
-      <LatestPost/>
+      {/* <LatestPost/> */}
       
-      <Blog/>
+      {/* <Blog/> */}
       
       <Subscribe/>
       
-      <Insta/>
+      {/* <Insta/> */}
       
       <Footer/>
     </div>

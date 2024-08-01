@@ -15,7 +15,8 @@ import Navbar from './components/Navbar.js';
 import Cart from './pages/Cart.js';
 import User from './pages/User.js';
 import Footer from './components/Footer.js';
-
+import Slide from './components/slide.js';
+import Carousell from './components/Carousel.js';
 function App() {
    
   useEffect(() => {
@@ -62,10 +63,17 @@ function App() {
    
     <BrowserRouter>
     <div>
-    
+   
     <Navbar/>
-
+    
     <main className='main-content'>
+    <div>
+    <Slide/>
+    </div>
+    <div>
+      {/* <Slides/> */}
+      <Carousell/>
+    </div>
     <Routes>
 
       <Route path='/' element={<Home/>}/>
@@ -76,12 +84,10 @@ function App() {
 
  
       </Routes>
-
+     
       </main>
 
-
-
-
+      
       </div>
     </BrowserRouter>
       
