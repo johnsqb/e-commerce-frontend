@@ -67,13 +67,7 @@ function App() {
     <Navbar/>
     
     <main className='main-content'>
-    <div>
-    <Slide/>
-    </div>
-    <div>
-      {/* <Slides/> */}
-      <Carousell/>
-    </div>
+    
     <Routes>
 
       <Route path='/' element={<Home/>}/>

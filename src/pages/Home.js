@@ -14,6 +14,8 @@ import { Carousel } from "bootstrap";
 import MultiCarousell from "../components/prdcarousel";
 import MultiCarousells from "../components/productsss";
 import Prds from "../components/productsss";
+import Slide from "../components/slide";
+import Carousell from "../components/Carousel";
 const Home = () => {
    
   
@@ -61,7 +63,13 @@ const Home = () => {
     </div>
 
     
-
+    <div>
+    <Slide/>
+    </div>
+    <div>
+      {/* <Slides/> */}
+      <Carousell/>
+    </div>
     
 
       {/* <ShopPro/> */}

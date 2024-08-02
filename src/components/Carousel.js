@@ -29,9 +29,9 @@ const Carousell = () => {
       <Slider autoplay={true} autoplaySpeed={2000} dots={true} prevArrow={<PreviousBtn/>} nextArrow={<Nextbtn/>}
       dotsClass = "slick-dots custom-indicator">
 
-      <div><img src='assets/images/slide1.png' alt="Image 1" /></div>
-      <div><img src='assets/images/slide2.webp' alt="Image 2" /></div>
-      <div><img src='assets/images/slide3.webp' alt="Image 3"/></div>
+      <div><img src='assets/images/slide1.png' alt="Image 1"  className="imgss"/></div>
+      <div><img src='assets/images/slide2.webp' alt="Image 2" className="imgss"/></div>
+      <div><img src='assets/images/slide3.webp' alt="Image 3" className="imgss"/></div>
       </Slider>
     </div>
   )
