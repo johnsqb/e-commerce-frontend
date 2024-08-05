@@ -14,7 +14,10 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Navbar from './components/Navbar.js';
 import Cart from './pages/Cart.js';
 import Footer from './components/Footer.js';
+import Slide from './components/slide.js';
+import Carousell from './components/Carousel.js';
 import Login from './pages/Login.js';
+
 
 function App() {
    
@@ -62,10 +65,11 @@ function App() {
    
     <BrowserRouter>
     <div>
-    
+   
     <Navbar/>
-
+    
     <main className='main-content'>
+    
     <Routes>
 
       <Route path='/' element={<Home/>}/>
@@ -76,12 +80,10 @@ function App() {
 
  
       </Routes>
-
+     
       </main>
 
-
-
-
+      
       </div>
     </BrowserRouter>
       
