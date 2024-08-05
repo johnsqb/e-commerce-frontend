@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Blog from "../components/Blog";
 import Footer from "../components/Footer";
 import LatestPost from "../components/LatestPost";
@@ -16,7 +17,14 @@ import MultiCarousells from "../components/productsss";
 import Prds from "../components/productsss";
 import Slide from "../components/slide";
 import Carousell from "../components/Carousel";
+
+
+
+
+
 const Home = () => {
+
+  
    
   
   return (  

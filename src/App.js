@@ -13,10 +13,12 @@ import ProductView from './pages/ProductView.js';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Navbar from './components/Navbar.js';
 import Cart from './pages/Cart.js';
-import User from './pages/User.js';
 import Footer from './components/Footer.js';
 import Slide from './components/slide.js';
 import Carousell from './components/Carousel.js';
+import Login from './pages/Login.js';
+
+
 function App() {
    
   useEffect(() => {
@@ -73,7 +75,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/product-details/:id' element={<ProductView/>}/>
       <Route path='/cart' element={<Cart/>}/>
-      <Route path='/user' element={<User/>}/>
+      <Route path='/login' element={<Login/>}/>
 
 
  

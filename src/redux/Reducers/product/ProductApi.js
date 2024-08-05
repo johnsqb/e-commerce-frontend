@@ -2,20 +2,22 @@
 import { createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios';
 
+// const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXRoZXdzIiwiaWF0IjoxNzIxNDEzMDcxLCJleHAiOjE3MjE0MTY2NzF9.JCY05f2vD7BNoLLkPI4-i9VNRIgxvC_2X-3ubjP2lu0'
 
-
-const JwtToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXRoZXdzIiwiaWF0IjoxNzIxMjk2MzYxLCJleHAiOjE3MjEyOTk5NjF9.AXWH6foQyq5n0iUvYZ-TiOMIWvcxGB5vpsE4uF08cI4';
 export  const getProducts = createAsyncThunk('products/get' ,async()=>{
+   
+ 
+    try{
+//  const response = await axios.get("http://localhost:8080/rest/showAll",{
 
- try{
- const response = await axios.get("http://localhost:8080/rest/showAll",{
-
-    headers:{
-       Authorization: `Bearer ${JwtToken}`
-    }
+//     headers:{
+//        Authorization: `Bearer ${token}`
+//     }
 
     
- });
+//  });
+const response = await axios.get("http://localhost:8080/rest/showAll");
+
  return response.data; // Assuming the API response contains data field
 
 } catch (error) {
