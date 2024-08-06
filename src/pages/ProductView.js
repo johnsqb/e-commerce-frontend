@@ -9,7 +9,6 @@ const ProductView = () => {
   const { id } = useParams();
   const {data:products,status } = useSelector(state => state.product);
 
-  // console.log(products);
 
   const selectedProduct = products.find((product) => product.id === parseInt(id));
   
