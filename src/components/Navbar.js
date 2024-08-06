@@ -71,7 +71,9 @@ const Navbar = () => {
             </div>
             <div className="offcanvas-body">
               <ul id="navbar" className="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                <li className="nav-item">
+                <div class="serc"><input type="text" class="searches" placeholder='Search Products' autoComplete='off'></input>
+                <button class="sr"><i class="fa-solid fa-magnifying-glass"></i></button></div>
+                {/* <li className="nav-item">
                   <a className="nav-link me-4 active" href="/">Home</a>
                 </li>
                 <li className="nav-item">
@@ -88,9 +90,10 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link me-4" href="#latest-blog">Blog</a>
-                </li>
+                </li> */}
+               
                 <li className="nav-item dropdown">
-                  <a className="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pages</a>
+                  <a className="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Become Seller</a>
                   <ul className="dropdown-menu">
                     <li>
                       <a href="about.html" className="dropdown-item">About</a>

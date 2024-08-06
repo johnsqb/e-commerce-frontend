@@ -14,11 +14,16 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Navbar from './components/Navbar.js';
 import Cart from './pages/Cart.js';
 import Footer from './components/Footer.js';
+import Slide from './components/slide.js';
+import Carousell from './components/Carousel.js';
 import Login from './pages/Login.js';
 
 import JwtDecode from './redux/utils/JwtDecode.js';
 import Layout from './Layout.js';
 import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
+
+
+
 function App() {
 
   const token = sessionStorage.getItem('JwtToken');
@@ -66,6 +71,7 @@ function App() {
   return (
 
     <BrowserRouter>
+
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
@@ -108,7 +114,8 @@ function App() {
 
     // </Routes>
     // </BrowserRouter>
-      
+
+   
     
   );
 }

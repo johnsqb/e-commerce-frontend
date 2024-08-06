@@ -2,8 +2,8 @@ import React from 'react'
 
 const ShopPro = () => {
   return (
-    <>
-        <section id="billboard" className="position-relative overflow-hidden bg-light-blue">
+  
+         <section id="billboard" className="position-relative overflow-hidden bg-light-blue">
       <div className="swiper main-swiper">
         <div className="swiper-wrapper">
           <div className="swiper-slide">
@@ -34,7 +34,7 @@ const ShopPro = () => {
                 </div>
                 <div className="col-md-5">
                   <div className="image-holder">
-                    <img src="assets/images/banner-image.png" alt="banner"/>
+                    <img src="" alt="banner"/>
                   </div>
                 </div>
               </div>
@@ -54,8 +54,9 @@ const ShopPro = () => {
         </svg>
       </div>
     </section>
- 
-    </>
+
+    
+  
   )
 }
 
