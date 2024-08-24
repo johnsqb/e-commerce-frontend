@@ -17,10 +17,11 @@ import Footer from './components/Footer.js';
 import Slide from './components/slide.js';
 import Carousell from './components/Carousel.js';
 import Login from './pages/Login.js';
-
+ 
 import JwtDecode from './redux/utils/JwtDecode.js';
 import Layout from './Layout.js';
 import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
+import ProductList from './pages/ProductList.js';
 
 
 
@@ -29,42 +30,7 @@ function App() {
   const token = sessionStorage.getItem('JwtToken');
   
    
-  useEffect(() => {
-    
-
-    const scriptbill=document.createElement("script")
-    const scripttestimoni=document.createElement("script")
-
-
-
-    scriptbill.innerHTML = ` 
-         var swiper = new Swiper(".main-swiper", {
-        speed: 500,
-        navigation: {
-          nextEl: ".swiper-arrow-prev",
-          prevEl: ".swiper-arrow-next",
-          
-        },
   
-      
-    })`
-
-    scripttestimoni.innerHTML = ` 
-        
-        var swiper = new Swiper(".testimonial-swiper", {
-        loop: true,
-        navigation: {
-          nextEl: ".swiper-arrow-prev",
-          prevEl: ".swiper-arrow-next",
-        },
-      
-      
-    })`
-  
-    document.body.appendChild(scriptbill)
-    document.body.appendChild(scripttestimoni)
-
-  }, [])
 
   
   
@@ -75,12 +41,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
-        <Route 
-            path='/product-details/:id' 
-            element={<ProtectedRoutes allowedRoles={['ROLE_USER']} />}
-          >
-            <Route index element={<ProductView />} />
-          </Route>
+      
+            <Route   path='/product-details/:id'  index element={<ProductView />} />
           <Route 
             path='/cart' 
             element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_USER']} />}
@@ -88,6 +50,7 @@ function App() {
             <Route index element={<Cart />} />
           </Route>
         <Route path='/login' element={<Login />} />
+        <Route path='/prolist' element={<ProductList />} />   {/*product list new*/}
       </Route>
     </Routes>
   </BrowserRouter>

@@ -2,6 +2,8 @@ import { configureStore} from '@reduxjs/toolkit'
  import productReducer from '../Reducers/product/ProductSlice'
 import cartReducer from '../Reducers/cart/cartSlice';
 import authReducer from '../Reducers/auth/authSlice'
+import categoryReducer from '../Reducers/categories/categorySlice'
+
 
 const storedToken = sessionStorage.getItem('jwtToken');
 
@@ -12,7 +14,9 @@ export const store = configureStore({
     reducer:{
         cart: cartReducer,
         product: productReducer,
-        auth: authReducer
+        auth: authReducer,
+        category:categoryReducer
+
 
     },  preloadedState: {
         auth: {

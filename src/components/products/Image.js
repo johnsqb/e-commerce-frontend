@@ -9,34 +9,29 @@ import { jwtDecode } from 'jwt-decode';
 const Image = (props) => {
 
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const [role, setRole] = useState('');
-  const token = sessionStorage.getItem('jwtToken');
+  // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  // const [role, setRole] = useState('');
+  // const token = sessionStorage.getItem('jwtToken');
 
-  useEffect(() => {
-    if (isAuthenticated && token) {
+  // useEffect(() => {
+  //   if (isAuthenticated && token) {
 
-      const decoded = jwtDecode(token);
-      setRole(decoded.roles);     
-    }
-  }, [isAuthenticated,token]);
+  //     const decoded = jwtDecode(token);
+  //     setRole(decoded.roles);     
+  //   }
+  // }, [isAuthenticated,token]);
 
 
   const handleClick = (pro) => {
 
 
-    if (!isAuthenticated) {
-      navigate('/login');
-    } else {
-      if (role === "ROLE_USER") {
+   
         
         navigate(`/product-details/${pro}`)
-        }
-       else {
-        alert("Please login as a user to see product details.");
-      }
+        
+       
     }
-  };
+  
 
 
   return (

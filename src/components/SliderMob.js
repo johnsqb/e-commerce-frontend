@@ -26,9 +26,10 @@ const SliderMob = (props) => {
   const dispatch = useDispatch();
 
     const {data:products,status } = useSelector(state => state.product);
-    console.log();
+    console.log(products);
     const id =props.parentId;
-
+    console.log(id);
+    
     const filteredProducts = products.filter(product => (product.parentCategory.id===id));
 
     
@@ -37,7 +38,7 @@ const SliderMob = (props) => {
        dispatch(getProducts());
         
         // fetch('https://fakestoreapi.com/products')
-        // .then(data => data.json())
+        // .then(data => data.json()) 
         // .then(result=>setProducts(result))
  },[dispatch]);
 

@@ -6,7 +6,7 @@ export const addToCartAsync = createAsyncThunk(
     async ({ product_id, quantity }) => {
       const token = sessionStorage.getItem('jwtToken')
       const response = await axios.post(
-        "http://localhost:8080/cart/addToCart",
+        "http://localhost:8081/cart/addToCart",
         { product_id, quantity },
         {
           headers: {

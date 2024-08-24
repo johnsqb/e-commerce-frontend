@@ -71,17 +71,12 @@ const Home = () => {
     </div>
 
     
-    <div>
-    <Slide/>
-    </div>
-    <div>
-      {/* <Slides/> */}
-      <Carousell/>
-    </div>
+ 
     
-
+       <Carousell /> 
       {/* <ShopPro/> */}
       <MultiCarousell/>
+      
       <Apps/>
      
      <MultiCarousell/>

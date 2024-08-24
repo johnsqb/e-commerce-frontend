@@ -50,7 +50,7 @@ export const login = (username, password) => async (dispatch) => {
   dispatch(authStart());
 
   try {
-    const response = await axios.post('http://localhost:8080/auth/authenticate', { username, password });
+    const response = await axios.post('http://localhost:8081/auth/authenticate', { username, password });
     const token  = response.data; // Assuming the API response contains a token field
     
     dispatch(authSuccess({ token }));

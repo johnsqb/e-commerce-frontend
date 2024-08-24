@@ -16,7 +16,7 @@ export  const getProducts = createAsyncThunk('products/get' ,async()=>{
 
     
 //  });
-const response = await axios.get("http://localhost:8080/rest/showAll");
+const response = await axios.get("http://localhost:8081/rest/showAll");
 
  return response.data; // Assuming the API response contains data field
 
