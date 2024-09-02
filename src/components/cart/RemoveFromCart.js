@@ -19,3 +19,4 @@ const RemoveFromCart = () => {
 }
 
 export default RemoveFromCart
+

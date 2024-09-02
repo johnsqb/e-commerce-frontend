@@ -3,6 +3,7 @@ import { useEffect } from "react"
 
 import Home from './pages/Home.js';
 import ProductView from './pages/ProductView.js';
+import PostProductView from './pages/PostProductView.js';
 
 // Import Bootstrap CSS
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -43,6 +44,7 @@ function App() {
         <Route index element={<Home />} />
       
             <Route   path='/product-details/:id'  index element={<ProductView />} />
+            <Route   path='/postproduct-details/:id'  index element={<PostProductView />} />
           <Route 
             path='/cart' 
             element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_USER']} />}

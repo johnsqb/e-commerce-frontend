@@ -14,7 +14,7 @@ const Layout = () => {
         {/* <Carousell /> */}
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer/> */}
     </>
   );
 };
