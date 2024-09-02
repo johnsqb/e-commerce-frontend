@@ -43,23 +43,22 @@ const MultiCarousell = () => {
   }, [productStatus ,dispatch]);
 
   const images=[
-                  '/assets/images/multicar.png',
-                  '/assets/images/multicar0.jpeg',
-                  '/assets/images/multicar3.jpeg',
-                  '/assets/images/multicaripad.png',
-                  '/assets/images/multicar8.jpeg',
-                  '/assets/images/multicarironbox.jpg',
-                  '/assets/images/multicar6.jpeg',
-                  '/assets/images/multicar7.jpeg',
-                  '/assets/images/multicar8.jpeg',
-                  '/assets/images/multicar9.jpeg',
-                  '/assets/images/multicar10.jpeg',
-                  '/assets/images/multicar11.jpeg'
-
-                  ]
-
+                  'assets/images/multicar.png',
+                  'assets/images/multicar0.jpeg',
+                  'assets/images/multicar3.jpeg',
+                  'assets/images/multicar4.jpeg',
+                  'assets/images/multicar8.jpeg',
+                  'assets/images/multicar5.jpeg',
+                  'assets/images/multicar6.jpeg',
+                  'assets/images/multicar7.jpeg',
+                  'assets/images/multicar8.jpeg',
+                  'assets/images/multicar9.jpeg',
+                  'assets/images/multicar10.jpeg',
+                  'assets/images/multicar11.jpeg'
 
                   
+
+  ]
   const products =  useSelector(selectAllProducts);
 
   console.log(products);

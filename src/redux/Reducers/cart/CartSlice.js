@@ -3,41 +3,81 @@ import axios from "axios";
 
 export const addToCartAsync = createAsyncThunk(
     "cart/addToCartAsync",
-    async ({ product_id, quantity }) => {
-      const token = sessionStorage.getItem('jwtToken')
-      const response = await axios.post(
-        "http://localhost:8081/cart/addToCart",
-        { product_id, quantity },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+    async ({ product_id, quantity} ,{rejectWithValue }) => {
+      try {
+        const token = sessionStorage.getItem('jwtToken');
+        const response = await axios.post(
+          "http://localhost:8081/cart/addToCart",
+          { product_id, quantity },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        return response.data;
+      } catch (error) {
+        if (error.response && error.response.data) {
+          return rejectWithValue(error.response.data.message);
         }
-      );
-      return response.data;
+        throw error;
+      }
     }
-  );
-  
-const initialState=[];
+);
+
+export const fetchCartItems = createAsyncThunk(
+  'cart/fetchCartItems',
+  async () => {
+    try {
+      const token = sessionStorage.getItem('jwtToken');
+      const response = await axios.get('http://localhost:8081/cart/showcart', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      throw error;
+    }
+  }
+);
+
+const initialState = {
+  cartItems: [], // This is where cart items should be stored
+  loading: false,
+  error: null,
+};
+
 const cartSlice = createSlice({
-
-    name:'cart',
-    initialState,
-    reducers:{
-
-        add(state,action){
-            state.push(action.payload)
-        },
-        remove(state,action){
-            return state.filter(item => item.id !== action.payload);
-        },
+  name: 'cart',
+  initialState,
+  reducers: {
+    add(state, action) {
+      state.cartItems.push(action.payload);
     },
-    extraReducers: (builder) => {
-        builder.addCase(addToCartAsync.fulfilled, (state, action) => {
-          state.push(action.payload);
-        });
-      },
-
+    remove(state, action) {
+      state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addToCartAsync.fulfilled, (state, action) => {
+        state.cartItems.push(action.payload);
+      })
+      .addCase(fetchCartItems.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchCartItems.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cartItems = action.payload; // Update cartItems with fetched data
+      })
+      .addCase(fetchCartItems.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
 });
-export const{add,remove} = cartSlice.actions;
+
+export const { add, remove } = cartSlice.actions;
 export default cartSlice.reducer;

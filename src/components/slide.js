@@ -8,7 +8,7 @@ function Slide(){
 
 
   const categoryImages = {
-    watch:"assets/images/pexels-anthony-derosa-39577-236915.jpg",
+    Watch:"assets/images/pexels-anthony-derosa-39577-236915.jpg",
     Grocery: "assets/images/OIP (14).jpeg",
     mobile: "assets/images/phones.png",
     Electronics: "assets/images/laptop.jpg",

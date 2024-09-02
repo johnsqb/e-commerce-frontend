@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 
 // const SelectedImage = ({images}) => {
 
-  const SelectedImage = (props) => {
+  const PostSelectedImage = (props) => {
 
-     const images = props.images
+     const image = props.image
     
     // const images=[
-    //   'assets/images/multicar.png',
-    //   'assets/images/multicar0.jpeg',
-    //   'assets/images/multicar3.jpeg',
-    //   'assets/images/multicar4.jpeg',
+    //   '/assets/images/multicar.png',
+    //   '/assets/images/multicar0.jpeg',
+    //   '/assets/images/multicar3.jpeg',
+    //   '/assets/images/multicar4.jpeg',
     // ]
 
-  const [mainImage,setMainImage] = useState(images[1].imageUrl);
-  // const [mainImage,setMainImage] = useState(images[2]);
+  // const [mainImage,setMainImage] = useState(images[1].imageUrl);
+  const [mainImage,setMainImage] = useState(image);
 
 
   const handleThumbnailClick = (imageUrl) => {
@@ -31,13 +31,13 @@ import React, { useState } from 'react'
 
                 <img src={mainImage} alt="main image" className="xzoom" id="xzoom-default"/>
 						
-						     <div className="xzoom-thumbs">
+						     {/*<div className="xzoom-thumbs">
 
         
            {images.map((image, index) => (
             <a key={index} href="#" onClick={() => handleThumbnailClick(image)}>
               <img src={image} alt={`Thumbnail ${index + 1}`} className="xzoom-gallery" width="80" />
-            </a>))}  
+            </a>))}  */}
                          {/* <a href="#" >
                   <img src={images[1].imageUrl} alt="1st sub" className="xzoom-gallery" width="80" />
                 </a>
@@ -50,9 +50,8 @@ import React, { useState } from 'react'
 						</div>*/}
 					</div>
 				</div>
-        </div>
     </>
   )
 }
 
-export default SelectedImage
+export default PostSelectedImage

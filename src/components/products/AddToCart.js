@@ -40,6 +40,7 @@ const AddToCart = (props) => {
     } else {
       if (role === "ROLE_USER") {
         dispatch(addToCartAsync({ product_id: product.id, quantity }));
+        
         alert("product added to cart");
 
           
