@@ -21,8 +21,17 @@ const authSlice = createSlice({
       state.error = null;
     },
     authSuccess(state, action) {
+
+
+      console.log(action.payload.token);
+      console.log("Auth Success Action Triggered");
       const decodedToken = jwtDecode(action.payload.token);
-      console.log(decodedToken);
+
+
+      console.log("Decoded Token:", decodedToken);
+      
+      
+
       
       state.loading = false;
       state.error = null;
@@ -48,12 +57,13 @@ const authSlice = createSlice({
 export const { authStart, authSuccess, authFail, logout } = authSlice.actions;
 
 // Async action creator for login
-export const login = (username, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
   dispatch(authStart());
 
   try {
-    const response = await axios.post('http://localhost:8081/auth/authenticate', { username, password });
-    const token  = response.data; // Assuming the API response contains a token field
+    const response = await axios.post('http://localhost:8080/ecommerce/v1/auth/authenticate', { email, password });
+    const token  = response.data.access_token; // Assuming the API response contains a token field
+    console.log(token);
     
     dispatch(authSuccess({ token }));
     sessionStorage.setItem('jwtToken', token); // Store token in localStorage
