@@ -14,19 +14,19 @@ const Login = () => {
 
   const obj = useSelector(state=>state.auth.token)
 
-  const [username,setUsername] =useState('');
+  const [email,setEmail] =useState('');
   const [password,setPassword] =useState('');
 
 
   const handleLogin = async (e) => {
     e.preventDefault();
-     dispatch(login(username, password));
+     dispatch(login(email, password));
 
-     console.log(obj)
+     
    
   };
   if (isAuthenticated) {
-    console.log("welcome ", username);
+    console.log("welcome ", email);
     return <Navigate to="/"/>;
   }
 
@@ -40,7 +40,7 @@ const Login = () => {
       <form action="" onSubmit={handleLogin}>
         <h1>Login</h1>
         <div className="input-box">
-          <input type="text" placeholder="username" required onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" placeholder="email" required onChange={(e) => setEmail(e.target.value)}/>
           <i className='bx bxs-user'></i>
         </div>
         <div className="input-box">

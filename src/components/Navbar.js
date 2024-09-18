@@ -140,7 +140,7 @@ const Navbar = () => {
                           </svg>
                         </a>):
                         (   <>
-                          <span>Hi,{username  }</span>
+                          {/* <span>Hi,{username  }</span> */}
                           <button onClick={handleLogout} >Logout</button>
                         </>)
 }   
