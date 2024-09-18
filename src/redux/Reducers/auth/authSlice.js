@@ -22,6 +22,8 @@ const authSlice = createSlice({
     },
     authSuccess(state, action) {
       const decodedToken = jwtDecode(action.payload.token);
+      console.log(decodedToken);
+      
       state.loading = false;
       state.error = null;
       state.isAuthenticated = true;
@@ -55,7 +57,6 @@ export const login = (username, password) => async (dispatch) => {
     
     dispatch(authSuccess({ token }));
     sessionStorage.setItem('jwtToken', token); // Store token in localStorage
-    console.log(token);
 
   } catch (error) {
     dispatch(authFail(error.message));

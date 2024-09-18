@@ -10,7 +10,7 @@ const Layout = () => {
         <>
       <Navbar />
       <main className='main-content'>
-        <Slide />
+        {/* <Slide /> */}
         {/* <Carousell /> */}
         <Outlet />
       </main>

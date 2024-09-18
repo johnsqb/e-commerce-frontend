@@ -23,6 +23,7 @@ import JwtDecode from './redux/utils/JwtDecode.js';
 import Layout from './Layout.js';
 import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
 import ProductList from './pages/ProductList.js';
+import CheckOutPage from './pages/CheckOutPage.js';
 
 
 
@@ -42,9 +43,12 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
+
       
-            <Route   path='/product-details/:id'  index element={<ProductView />} />
+            <Route   path='/product-details/:id'   element={<ProductView />} />
             <Route   path='/postproduct-details/:id'  index element={<PostProductView />} />
+            <Route   path='/checkout'   element={<CheckOutPage />} />
+
           <Route 
             path='/cart' 
             element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_USER']} />}

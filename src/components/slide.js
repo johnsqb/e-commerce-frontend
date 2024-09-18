@@ -8,17 +8,17 @@ function Slide(){
 
 
   const categoryImages = {
-    Watch:"assets/images/pexels-anthony-derosa-39577-236915.jpg",
-    Grocery: "assets/images/OIP (14).jpeg",
-    mobile: "assets/images/phones.png",
-    Electronics: "assets/images/laptop.jpg",
-    Furnitures: "assets/images/furniture.png",
-    Appliances: "assets/images/appliances.jpg",
-    Fashion:"assets/images/portrait-smiling-beautiful-girl-her-handsome-boyfriend-laughing-happy-cheerful-couple-sunglasses.jpg",
-    Beauty:"assets/images/cute-5157056_1280.jpg",
-    Kitchen:"assets/images/pexels-zvolskiy-2062426.jpg",
-    Travel:"assets/images/pexels-freestockpro-1008155.jpg",
-    Mobiles:"assets/images/NicePng_smartphones-png_2370146.png"
+    Watch:"/assets/images/pexels-anthony-derosa-39577-236915.jpg",
+    Grocery: "/assets/images/OIP (14).jpeg",
+    mobile: "/assets/images/phones.png",
+    Electronics: "/assets/images/laptop.jpg",
+    Furnitures: "/assets/images/furniture.png",
+    Appliances: "/assets/images/appliances.jpg",
+    Fashion:"/assets/images/portrait-smiling-beautiful-girl-her-handsome-boyfriend-laughing-happy-cheerful-couple-sunglasses.jpg",
+    Beauty:"/assets/images/cute-5157056_1280.jpg",
+    Kitchen:"/assets/images/pexels-zvolskiy-2062426.jpg",
+    Travel:"/assets/images/pexels-freestockpro-1008155.jpg",
+    Mobiles:"/assets/images/NicePng_smartphones-png_2370146.png"
   };
   const dispatch = useDispatch();
 

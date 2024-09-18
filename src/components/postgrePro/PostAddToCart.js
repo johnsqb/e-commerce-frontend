@@ -30,12 +30,11 @@ const PostAddToCart = (props) => {
 
   const ToCart = async(product,quantity) => {
 
-    const cartId = 1;
+    const cartId = 2;
 
     console.log(product);
     console.log(product.id);
     console.log(product.productsSkus[0].id)
-    console.log(product.subCategories.id);
     console.log(quantity);
     
     

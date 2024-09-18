@@ -19,17 +19,26 @@ const CartImage = (props) => {
 
 
   return (
-    <div>
+
+<>
+            <a onClick={()=>handleClick(props.pro)}>
+            {/* <img  src={props.imageUrl[1].imageUrl} alt="product-item"  style={{width:'100%',height:'160px',objectFit:'contain',marginBottom:'10px',cursor:'pointer'}} className="imgs"  
+              onClick={()=>handleClick(props.pro,props.imageUrl)}  /> */}
+                  <img  src="/assets/images/multicar.png" alt="product-item"  style={{width:'100%',height:'160px',objectFit:'contain',marginBottom:'10px',cursor:'pointer'}} className="imgs"  
+              onClick={()=>handleClick(props.pro)}  />
+            </a>
+
+
+    </>
 
         
-        <div className="image-holder">
-            <a onClick={()=>handleClick(props.pro)}>
-            <img  src={props.imageUrl[1].imageUrl} alt="product-item" className="img-fluid" />
-            </a>
-        </div>
+        // <div className="image-holder">
+        //     <a onClick={()=>handleClick(props.pro)}>
+        //     <img  src={props.imageUrl[1].imageUrl} alt="product-item" className="img-fluid" />
+        //     </a>
+        // </div>
 
 
-    </div>
   )
 }
 
