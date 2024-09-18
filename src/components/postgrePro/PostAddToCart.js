@@ -31,6 +31,7 @@ const PostAddToCart = (props) => {
   }, [isAuthenticated, token]);
   
 
+
   const checkPincodeDelivery = async (productId, pinCode) => {
     try {
       console.log(pincode +" "+  productId);
@@ -62,6 +63,7 @@ const PostAddToCart = (props) => {
   };
 
   const handleAddToCart = async (product, quantity) => {
+    
     
     if (!isAuthenticated) {
       navigate('/login');

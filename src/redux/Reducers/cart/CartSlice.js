@@ -43,6 +43,24 @@ export const fetchCartItems = createAsyncThunk(
   }
 );
 
+export const deleteCartItems = createAsyncThunk(
+  'cart/deleteCartItems',
+  async ({ product_id}) => {
+    try {
+      const token = sessionStorage.getItem('jwtToken');
+      const response = await axios.delete(`http://localhost:8081/cart/removefromcart?cartid=${product_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      throw error;
+    }
+  }
+);
+
 const initialState = {
   cartItems: [], // This is where cart items should be stored
   loading: false,
@@ -62,8 +80,15 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(addToCartAsync.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(addToCartAsync.fulfilled, (state, action) => {
         state.cartItems.push(action.payload);
+      })
+      .addCase(addToCartAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       })
       .addCase(fetchCartItems.pending, (state) => {
         state.loading = true;

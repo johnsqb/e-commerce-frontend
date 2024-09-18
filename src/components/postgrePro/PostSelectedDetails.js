@@ -5,32 +5,33 @@ import { Button } from 'bootstrap';
 
 const PostSelectedDetails = (props) => {
 
+	const quantity=1;
 
-	const [quantity,setQuantity]=useState(1);
+	// const [quantity,setQuantity]=useState(1);
 
 
 	
-	const price = props.sellingprice;
+	 const price = props.sellingprice;
  
 	
 
-	const handleIncrement = ()=>{
+	// const handleIncrement = ()=>{
 
-		if(quantity<10){
+	// 	if(quantity<10){
 
-		setQuantity(prevCount=>prevCount+1)
+	// 	setQuantity(prevCount=>prevCount+1)
 		
-		}
-	}
+	// 	}
+	// }
 
-	const handleDecrement = ()=>{
+	// const handleDecrement = ()=>{
 
-		if(quantity>1){
+	// 	if(quantity>1){
 
-		setQuantity(prevCount=>prevCount-1)
+	// 	setQuantity(prevCount=>prevCount-1)
 
-		}
-	}
+	// 	}
+	// }
 	
 	
 	
@@ -39,7 +40,7 @@ const PostSelectedDetails = (props) => {
         <div className="col-md-6 col-sm-12">
 					<div className="xzoom_details">
 						<h4>{props.name}</h4>
-						<h3> {price*quantity} </h3>
+						<h3> {price} </h3>
 						<p><i className="fas fa-star"></i>
 							<i className="fas fa-star"></i>
 							<i className="fas fa-star"></i>
@@ -58,13 +59,7 @@ const PostSelectedDetails = (props) => {
 								<option value="5"> 3 Pound </option>
 							</select>
 						</div> --> */}
-						<div className="d-flex">
-							<label for=""> Qty: </label>
-							<button type="button"  className="input-type-button" onClick={handleIncrement}>+</button>
-							{/* <input type="text"  className="form-control"/> */}
-							<div className="form-control" >{quantity}</div>
-							<button type="button" className="input-type-button"  onClick={handleDecrement}>-</button>
-						</div>
+						
 						<PostAddToCart product={props.pro} quantity={quantity}/>
 						{/* <a href="#;" className="btncar" onClick={()=>add(props.pro)}> Add To Cart  </a>
 						<a href="#;" className="btncar"> Check Out </a> */}

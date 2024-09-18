@@ -1678,3 +1678,30 @@ transition: 500ms;
     height:300px ;
   }
 }
+
+.dep {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the start of the container */
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 10px; /* Space between each product */
+  border-radius: 8px;
+  background-color: #fff;
+  width: 100%; /* Full width of the container */
+}
+
+.dep img {
+  max-width: 150px; /* Adjust size of the product image */
+  margin-bottom: 10px; /* Space between the image and the details */
+}
+
+.dep .product-details {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; /* Space between the details and the remove button */
+}
+
+.dep .remove-button {
+  align-self: flex-end; /* Align the remove button to the right */
+}
