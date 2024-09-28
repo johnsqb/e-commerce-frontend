@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from "react";
-import { Box, TextField, Button, MenuItem,Typography} from '@mui/material'; 
-import{getAddressStatus, getAddressError,selectAddress} from  '../redux/Reducers/addresses/AddressSlice';
-import {fetchAddresses} from '../redux/Reducers/addresses/AddressApi';
-import { useSelector, useDispatch } from 'react-redux';
-
-import AddIcon from '@mui/icons-material/Add';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import Login from "../components/checkout/Login";
-import AddressList from "../components/checkout/address/AddressList";
-import OrderSummary from "../components/checkout/OrderSummary";
+import ProductDetails from "../components/checkout/ProductDetails";
+import PaymentOptions from "../components/checkout/paymentMethod/PaymentOptions";
+import OrderSummary from '../components/checkout/OrderSummary';
+import { fetchAddresses } from '../redux/Reducers/addresses/AddressApi';
+import { getAddressStatus, selectAddress } from '../redux/Reducers/addresses/AddressSlice';
+
 // import {
-//   MDBRow,
+//   MDBRow,npm start
 //   MDBCol,
 //   MDBInput,
 //   MDBCheckbox,
@@ -26,11 +25,19 @@ const CheckoutPage = () => {
 
   console.log("checkout page");
   
+  const [formData, setFormData] = useState({});
 
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   const dispatch =useDispatch();
     
   const userId=5;
-  const addressStatus = useSelector(getAddressStatus)
+  const addressStatus = useSelector(getAddressStatus);
+  const userAddress = useSelector(selectAddress) || { cart: [] };
   console.log(addressStatus);
   
   useEffect(() => {
@@ -38,11 +45,11 @@ const CheckoutPage = () => {
 
   
       dispatch(fetchAddresses({ userId }));
-    },
-   [ ]);  // Add addressStatus and dispatch as dependencies
+    }, [dispatch, userId]); 
+     // Add addressStatus and dispatch as dependencies
 
 
-  const userAddress = useSelector((state) => state.address.userAddresses) || { cart: [] };  // Ensure cartItems is an object with a cart array
+ 
 
   // const cart = cartItems || [];  // Ensure cart is an array
   
@@ -183,10 +190,12 @@ const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 
 
   return (
+    
+    
     <div className="checkout-container">
     <div className="checkout-page">
     {/* Login Section */}
-
+    <div className="left-section" style={{ width: '65%', paddingRight: '20px' }}>
     <Login/>
     {/* <div className={`checkout-card ${isLoginExpanded ? "expanded" : ""}`}>
       <div className="header">
@@ -402,25 +411,37 @@ const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
           <p>Product 2: $50</p>
         </div>
       </div> */}
-      <OrderSummary/>
+       {/* <AddressList
+          address={address}
+          selectedAddressIndex={selectedAddressIndex}
+          onAddressSelect={handleAddressSelect}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          isCreatingNewAddress={isCreatingNewAddress}
+          setIsCreatingNewAddress={setIsCreatingNewAddress}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+          handlNewAddressCancel={handlNewAddressCancel}
+        /> */}
 
+      <OrderSummary/>
+     
 
 
 
       {/* Payment Options Section */}
-      <div className="checkout-card">
-        <div className="header">
-          <span className="step-number">4</span>
-          <h2>Payment Options</h2>
-        </div>
-        <div className="content">
-          <input type="radio" name="payment" /> Credit/Debit Card
-          <input type="radio" name="payment" /> UPI
-        </div>
+    
+        <div >
+        
+       <PaymentOptions/>
+       </div>
       </div>
-    </div>
+      </div>
   </div>
   );
+
 };
 
 export default CheckoutPage;

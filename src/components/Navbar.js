@@ -1,9 +1,8 @@
-import React from 'react'
-import { useSelector,useDispatch } from 'react-redux';
-import {logout,authSuccess} from '../redux/Reducers/auth/authSlice'
-import { Link, Navigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
-import { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { authSuccess, logout } from '../redux/Reducers/auth/authSlice';
 
 const Navbar = () => {
 
