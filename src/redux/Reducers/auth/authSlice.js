@@ -2,6 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import {getCurrentUserDetails} from "./CurrentUser"
 const storedToken = sessionStorage.getItem('jwtToken');
 
 const initialState = {
@@ -50,23 +51,35 @@ const authSlice = createSlice({
       state.token = null;
       state.isAuthenticated = false;
       sessionStorage.removeItem('jwtToken')
+      sessionStorage.removeItem('Name')
+      sessionStorage.removeItem('userEmail')
+      sessionStorage.removeItem('Id')
+      sessionStorage.removeItem('CartId')
+
     },
   },
 });
 
+
 export const { authStart, authSuccess, authFail, logout } = authSlice.actions;
+
 
 // Async action creator for login
 export const login = (email, password) => async (dispatch) => {
   dispatch(authStart());
 
   try {
+    
     const response = await axios.post('http://localhost:8080/ecommerce/v1/auth/authenticate', { email, password });
     const token  = response.data.access_token; // Assuming the API response contains a token field
     console.log(token);
+
     
     dispatch(authSuccess({ token }));
     sessionStorage.setItem('jwtToken', token); // Store token in localStorage
+
+    // console.log('Calling getCurrentUserDetails with token:', token); // Add this line to check if the function is being called
+    // await getCurrentUserDetails(token);
 
   } catch (error) {
     dispatch(authFail(error.message));

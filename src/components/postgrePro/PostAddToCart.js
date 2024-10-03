@@ -14,9 +14,11 @@ const PostAddToCart = (props) => {
   const [pincode, setPincode] = useState('');
   const [deliveryAvailable, setDeliveryAvailable] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [cartId,setCartId] = useState('');
 
   useEffect(() => {
     if (isAuthenticated && token) {
+      
       try {
         const decoded = jwtDecode(token);
         if (decoded.role && Array.isArray(decoded.role) && decoded.role[4]) {
@@ -33,6 +35,7 @@ const PostAddToCart = (props) => {
 
 
   const checkPincodeDelivery = async (productId, pinCode) => {
+    
     try {
       console.log(pincode +" "+  productId);
       
@@ -79,7 +82,7 @@ const PostAddToCart = (props) => {
       try {
         await dispatch(addToPostCartAsync({
           productsId: product.id,
-          cartId: 1, // You may want to dynamically fetch or manage this cartId
+          cartId: sessionStorage.getItem(cartId), // You may want to dynamically fetch or manage this cartId
           quantity,
           productsSkuId: product.productsSkus[0].id
         }));

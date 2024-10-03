@@ -9,8 +9,12 @@ export const fetchAddresses = createAsyncThunk(
  
   async ({userId}) => {
     
+    
     const response = await axios.get(`http://localhost:8080/api/address/getByUser?userId=${userId}`);
     
+    console.log('API response:', response.data); // Check if data is correct
+
+
     return response.data;
   },
 );

@@ -61,11 +61,13 @@ export const deleteCartItems = createAsyncThunk(
   }
 );
 
+
 const initialState = {
   cartItems: [], // This is where cart items should be stored
   loading: false,
   error: null,
 };
+
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -78,30 +80,38 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
     },
   },
+
+
   extraReducers: (builder) => {
     builder
       .addCase(addToCartAsync.pending, (state) => {
         state.loading = true;
       })
+
       .addCase(addToCartAsync.fulfilled, (state, action) => {
         state.cartItems.push(action.payload);
       })
+
       .addCase(addToCartAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
+
       .addCase(fetchCartItems.pending, (state) => {
         state.loading = true;
       })
+
       .addCase(fetchCartItems.fulfilled, (state, action) => {
         state.loading = false;
         state.cartItems = action.payload; // Update cartItems with fetched data
       })
+      
       .addCase(fetchCartItems.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
   },
+
 });
 
 export const { add, remove } = cartSlice.actions;

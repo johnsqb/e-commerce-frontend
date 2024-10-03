@@ -11,8 +11,11 @@ export const getUserRole = () => {
   if (token) {         
     try {
       const decoded = jwtDecode(token);
-      console.log(decoded.roles);
-      return decoded.role[4].authority; // Adjust based on your JWT payload
+      console.log(decoded.role);
+      console.log(decoded.role.find(role => role.authority.startsWith('ROLE')));
+       return decoded.role.find(role => role.authority.startsWith('ROLE')).authority;
+      // Adjust based on your JWT payload
+
     } catch (error) {
       console.error('Invalid token');
     }

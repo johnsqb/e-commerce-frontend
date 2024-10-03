@@ -17,13 +17,15 @@ import Slide from '../components/slide';
 import { fetchPostCartItems } from '../redux/Reducers/cart/postCartSlice';
 
 const Cart = () => {
+
+
+  const cartId  = sessionStorage.getItem('CartId');
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchPostCartItems({cartId}));
 
-    dispatch(fetchPostCartItems());
-    // Uncomment this line if you still need to fetch cart items separately
-    // dispatch(fetchCartItems());
   }, [dispatch]);
 
   const cartItems = useSelector((state) => state.postCart.postCartItems) || { cart: [] };  // Ensure cartItems is an object with a cart array

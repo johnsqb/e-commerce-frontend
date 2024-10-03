@@ -19,13 +19,13 @@ import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
 import CheckOutPage from './pages/CheckOutPage.js';
 import ProductList from './pages/ProductList.js';
 
-
+import Unauthorized from './components/Unauthorized.js';
 
 function App() {
 
   const token = sessionStorage.getItem('JwtToken');
   
-   
+  
   
 
   
@@ -42,10 +42,12 @@ function App() {
             <Route   path='/product-details/:id'   element={<ProductView />} />
             <Route   path='/postproduct-details/:id'  index element={<PostProductView />} />
             <Route   path='/checkout'   element={<CheckOutPage />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
 
           <Route 
             path='/cart' 
-            element={<ProtectedRoutes allowedRoles={['ROLE_CUSTOMER','ROLE_USER']} />}
+            element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_CUSTOMER']} />}
+
           >
             <Route index element={<Cart />} />
           </Route>
