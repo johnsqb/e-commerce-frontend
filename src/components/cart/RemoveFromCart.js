@@ -1,5 +1,5 @@
 import React from 'react'
-import { deleteCartItems,fetchCartItems } from '../../redux/Reducers/cart/cartSlice';
+import { deleteCartItems,fetchCartItems } from '../../redux/Reducers/cart/CartSlice';
 import { fetchPostCartItems,deletePostCartItems } from '../../redux/Reducers/cart/postCartSlice';
 import { useDispatch } from 'react-redux';
 
@@ -33,7 +33,7 @@ const RemoveFromCart = (props) => {
     // }
   };
   return (
-
+    
     <div>
 
 

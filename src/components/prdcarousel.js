@@ -1,13 +1,13 @@
-import Slider from "react-slick"
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material"
-import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import{getProductsStatus, getProductsError,selectAllProducts} from  '../redux/Reducers/postgreProduct/PostgreProductSlice';
-import {fetchPostgreProducts} from '../redux/Reducers/postgreProduct/PostgreproductApi';
-import PostImage from "./postgrePro/PostImage";
-import PostProductDetails from "./postgrePro/PostProductDetails";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import Slider from "react-slick"
+import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick.css'
+import { getProductsStatus, selectAllProducts } from '../redux/Reducers/postgreProduct/PostgreProductSlice'
+import { fetchPostgreProducts } from '../redux/Reducers/postgreProduct/PostgreproductApi'
+import PostImage from "./postgrePro/PostImage"
+import PostProductDetails from "./postgrePro/PostProductDetails"
 
 
 const PreviousBtn=(props)=>{

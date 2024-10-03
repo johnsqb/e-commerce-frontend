@@ -7,7 +7,7 @@ export const addToCartAsync = createAsyncThunk(
       try {
         const token = sessionStorage.getItem('jwtToken');
         const response = await axios.post(
-          "http://localhost:8081/cart/addToCart",
+          "http://localhost:8081/cart/add",
           { product_id, quantity },
           {
             headers: {
@@ -30,7 +30,7 @@ export const fetchCartItems = createAsyncThunk(
   async () => {
     try {
       const token = sessionStorage.getItem('jwtToken');
-      const response = await axios.get('http://localhost:8081/cart/showcart', {
+      const response = await axios.get('http://localhost:8081/cart/getall', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,7 +48,7 @@ export const deleteCartItems = createAsyncThunk(
   async ({ product_id}) => {
     try {
       const token = sessionStorage.getItem('jwtToken');
-      const response = await axios.delete(`http://localhost:8081/cart/removefromcart?cartid=${product_id}`, {
+      const response = await axios.delete(`http://localhost:8081/cart?cartid=${product_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

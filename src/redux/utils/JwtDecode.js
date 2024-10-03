@@ -1,5 +1,5 @@
 // utils/auth.js
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 export const getToken = () => {
   return sessionStorage.getItem('jwtToken'); // or however you store your token
@@ -15,6 +15,7 @@ export const getUserRole = () => {
       console.log(decoded.role.find(role => role.authority.startsWith('ROLE')));
        return decoded.role.find(role => role.authority.startsWith('ROLE')).authority;
       // Adjust based on your JWT payload
+
     } catch (error) {
       console.error('Invalid token');
     }

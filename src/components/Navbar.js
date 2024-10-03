@@ -1,12 +1,13 @@
-import React from 'react'
-import { useSelector,useDispatch } from 'react-redux';
-import {logout,authSuccess} from '../redux/Reducers/auth/authSlice'
-import { Link, Navigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
+
 import { useState,useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { getCurrentUserDetails } from '../redux/Reducers/auth/CurrentUser';
 import { getUserCart } from '../redux/Reducers/cart/CartIdApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { authSuccess, logout } from '../redux/Reducers/auth/authSlice';
+
 
 const Navbar = () => {
 

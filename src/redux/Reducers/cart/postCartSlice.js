@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const addToPostCartAsync = createAsyncThunk(
@@ -9,12 +9,28 @@ export const addToPostCartAsync = createAsyncThunk(
         `http://localhost:8080/api/cartItem/add?cartId=${cartId}&&productsId=${productsId}&&productsSkuId=${productsSkuId}`,
         { quantity },
         {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
+          params: {
+            cartId,
+            productsId,
+            productsSkuId,
+          },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
         }
       );
       return response.data;
+    }
+  );
+  export const updateCartItemQuantity = createAsyncThunk(
+    'postCart/updateCartItemQuantity',
+    async ({ itemId, newQuantity }) => {
+      // Send the updated quantity to the backend
+      const response = await axios.put(`http://localhost:8080/api/cartItem/${itemId}`, {
+        quantity: newQuantity,
+      });
+      return { itemId, newQuantity };// Adjust as needed based on your API response
+      // Adjust as needed based on your API response
     }
   );
 
@@ -46,7 +62,8 @@ export const addToPostCartAsync = createAsyncThunk(
           //   Authorization: `Bearer ${token}`,
           // },
         });
-        return response.data;
+        // return response.data;
+        return product_id;
       } catch (error) {
         console.error('Error fetching products:', error);
         throw error;
@@ -69,10 +86,10 @@ const postCartSlice = createSlice({
     reducers:{
 
         add(state,action){
-            state.push(action.payload)
+            state.postCartItems.push(action.payload)
         },
         remove(state,action){
-            return state.filter(item => item.id !== action.payload);
+            return state.postCartItems.filter(item => item.id !== action.payload);
         },
     },
     extraReducers: (builder) => {
@@ -81,7 +98,8 @@ const postCartSlice = createSlice({
           state.loading = true;
         })
         .addCase(addToPostCartAsync.fulfilled, (state, action) => {
-          state.postCartItems.push(action.payload);
+          state.loading = false;
+             state.postCartItems.push(action.payload);
         })
         .addCase(addToPostCartAsync.rejected, (state, action) => {
           state.loading = false;
@@ -99,8 +117,35 @@ const postCartSlice = createSlice({
         .addCase(fetchPostCartItems.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
+        })
+        .addCase(deletePostCartItems.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(deletePostCartItems.fulfilled, (state, action) => {
+          state.loading = false;
+          state.postCartItems = state.postCartItems.filter(
+            item => item.id !== action.payload
+          );
+        })
+        .addCase(deletePostCartItems.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message;
+        })
+        .addCase(updateCartItemQuantity.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(updateCartItemQuantity.fulfilled, (state, action) => {
+         
+          const { itemId, newQuantity } = action.payload;
+          const item = state.postCartItems.find(item => item.id === itemId);
+          if (item) {
+            item.quantity = newQuantity; // Update the quantity in the state
+          }
+        })
+        .addCase(updateCartItemQuantity.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message;
         });
-      
 
       },
 

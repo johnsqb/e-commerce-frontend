@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from "react";
-import { Box, TextField, Button, MenuItem,Typography} from '@mui/material'; 
-import{getAddressStatus, getAddressError,selectAddress} from  '../redux/Reducers/addresses/AddressSlice';
-import {fetchAddresses} from '../redux/Reducers/addresses/AddressApi';
-import { useSelector, useDispatch } from 'react-redux';
-
-import AddIcon from '@mui/icons-material/Add';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import Login from "../components/checkout/Login";
-import AddressList from "../components/checkout/address/AddressList";
-import OrderSummary from "../components/checkout/OrderSummary";
+import ProductDetails from "../components/checkout/ProductDetails";
+import PaymentOptions from "../components/checkout/paymentMethod/PaymentOptions";
+import OrderSummary from '../components/checkout/OrderSummary';
+import { fetchAddresses } from '../redux/Reducers/addresses/AddressApi';
+import { getAddressStatus, selectAddress } from '../redux/Reducers/addresses/AddressSlice';
+
 // import {
-//   MDBRow,
+//   MDBRow,npm start
 //   MDBCol,
 //   MDBInput,
 //   MDBCheckbox,
@@ -26,6 +25,8 @@ const CheckoutPage = () => {
 
   console.log("checkout page");
   
+  const [formData, setFormData] = useState({});
+
 
   
  
@@ -115,12 +116,44 @@ const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 
 
   return (
+    
+    
     <div className="checkout-container">
     <div className="checkout-page">
     {/* Login Section */}
 
-    {/* <Login/> */}
-    
+    <div className="left-section" style={{ width: '65%', paddingRight: '20px' }}>
+    <Login/>
+    {/* <div className={`checkout-card ${isLoginExpanded ? "expanded" : ""}`}>
+      <div className="header">
+        <div className="step-number">1</div>
+        <h2>LOGIN</h2>
+      </div>
+      <div className={`content ${isLoginExpanded ? "expanded" : ""}`}>
+        {isLoginExpanded ? (
+          <>
+            <p>Name: Johns George C</p>
+            <p>Phone: 9446462470</p>
+            <br/>
+            <a href="#" className="logout-link" onClick={() => alert('Logged out!')}>
+              Logout & login to another account
+            </a><br/>
+            <button className="continue" onClick={handleLoginToggle}>
+              Continue Checkout
+            </button>
+          </>
+        ) : (
+          <div className="compact-info">
+            <span>Johns George C</span>
+            <span>9446462470</span>
+            <button className="change-button" onClick={handleLoginToggle}>
+              Change
+            </button>
+          </div>
+        )}
+      </div>
+    </div> */}
+
 
 
 
@@ -131,25 +164,49 @@ const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 
     
     
-      <OrderSummary/>
+      {/* Order Summary Section */}
+      {/* <div className="checkout-card">
+        <div className="header">
+          <span className="step-number">3</span>
+          <h2>Order Summary</h2>
+        </div>
+        <div className="content">
+          {/* Map your cart items here */}
+         {/* <p>Product 1: $100</p>
+          <p>Product 2: $50</p>
+        </div>
+      </div> */}
+       {/* <AddressList
+          address={address}
+          selectedAddressIndex={selectedAddressIndex}
+          onAddressSelect={handleAddressSelect}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          isCreatingNewAddress={isCreatingNewAddress}
+          setIsCreatingNewAddress={setIsCreatingNewAddress}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+          handlNewAddressCancel={handlNewAddressCancel}
+        /> */}
 
+      <OrderSummary/>
+     
 
 
 
       {/* Payment Options Section */}
-      <div className="checkout-card">
-        <div className="header">
-          <span className="step-number">4</span>
-          <h2>Payment Options</h2>
-        </div>
-        <div className="content">
-          <input type="radio" name="payment" /> Credit/Debit Card
-          <input type="radio" name="payment" /> UPI
-        </div>
+    
+        <div >
+        
+       <PaymentOptions/>
+       </div>
       </div>
-    </div>
+      </div>
   </div>
   );
+
 };
 
 export default CheckoutPage;

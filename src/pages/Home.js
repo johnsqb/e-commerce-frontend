@@ -1,22 +1,13 @@
-import { useEffect } from "react";
-import Blog from "../components/Blog";
-import Footer from "../components/Footer";
-import LatestPost from "../components/LatestPost";
+import { React } from "react";
 import Mobilepro from "../components/Mobilepro";
-import Navbar from "../components/Navbar";
-import Service from "../components/Service";
 // import ShopPro from "../components/ShopPro";
-import Subscribe from "../components/Subscribe";
-import Watchpro from "../components/Watchpro";
-import YearlySale from "../components/YearlySale";
-import Insta from "./Insta";
-import Apps from "../components/product-carousel";
-import { Carousel } from "bootstrap";
+import Carousell from "../components/Carousel";
 import MultiCarousell from "../components/prdcarousel";
-import MultiCarousells from "../components/productsss";
+import Apps from "../components/product-carousel";
 import Prds from "../components/productsss";
 import Slide from "../components/slide";
-import Carousell from "../components/Carousel";
+import Subscribe from "../components/Subscribe";
+
 
 
 
