@@ -26,14 +26,22 @@ const AddressSlice = createSlice({
                 state.error = action.error.message;
 
 
-            });
+            })
+            
+            // .addCase(addNewAddress.fulfilled, (state, action) => {
+            //     state.products.push(action.payload); // Add the new category to the state
+            //     state.status = StatusCode.SUCCESS
+      
+            // })
+            
+            // .addCase(addNewAddress.pending,(state,action)=>{
+            //     state.status = StatusCode.LOADING
+            // });
             
         },
 
     
 });
-export const selectAddress = (state) => state.address.userAddresses;
-export const getAddressStatus = (state) => state.address.status;
-export const getAddressError = (state) => state.address.error;
+
 
 export default AddressSlice.reducer;

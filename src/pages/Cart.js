@@ -42,11 +42,12 @@ import Slide from '../components/slide';
 
 const Cart = () => {
 
+  const cartId  = sessionStorage.getItem('CartId');
   
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPostCartItems());
+    dispatch(fetchPostCartItems({cartId}));
   }, [dispatch]);
 
   // useEffect(() => {

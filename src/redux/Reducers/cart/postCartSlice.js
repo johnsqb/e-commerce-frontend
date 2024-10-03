@@ -20,13 +20,13 @@ export const addToPostCartAsync = createAsyncThunk(
 
   export const fetchPostCartItems = createAsyncThunk(
     'postCart/fetchPostCartItems',
-    async () => {
+    async ({cartId}) => {
       try {
-        // const token = sessionStorage.getItem('jwtToken');
-        const response = await axios.get('http://localhost:8080/api/cartItem/getall', {
-          // headers: {
-          //   Authorization: `Bearer ${token}`,
-          // },
+        const token = sessionStorage.getItem('jwtToken');
+        const response = await axios.get(`http://localhost:8080/api/cartItem/getByUser?id=${cartId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
         return response.data;
       } catch (error) {

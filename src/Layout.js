@@ -8,7 +8,7 @@ import Carousell from './components/Carousel.js';
 const Layout = () => {
   return (
         <>
-      <Navbar />
+      <Navbar  />
       <main className='main-content'>
         {/* <Slide /> */}
         {/* <Carousell /> */}

@@ -4,33 +4,56 @@ import {logout,authSuccess} from '../redux/Reducers/auth/authSlice'
 import { Link, Navigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import { useState,useEffect } from 'react';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { getCurrentUserDetails } from '../redux/Reducers/auth/CurrentUser';
+import { getUserCart } from '../redux/Reducers/cart/CartIdApi';
 
 const Navbar = () => {
 
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const [redirectToHome, setRedirectToHome] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  console.log(isAuthenticated);
-  const [username,setUsername] = useState('')
-
-  
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  const [username, setUsername] = useState('');
 
+  // Function to toggle the dropdown
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
+  useEffect(() => {
+    
     const jwtoken = sessionStorage.getItem('jwtToken');
+    const name = sessionStorage.getItem('Name'); // Get the username from sessionStorage
 
-    if(jwtoken){
 
-        const decode=jwtDecode(jwtoken);
-        console.log(decode);
-        setUsername(decode.sub);
-        dispatch(authSuccess({token:jwtoken}));
+    console.log("JWT token inside Navbar: ", jwtoken);
+    console.log("Name from sessionStorage: ", name);
+
+    if (jwtoken) {
+      // Set the username from sessionStorage after login
+      setUsername(name);
+      dispatch(authSuccess({ token: jwtoken }));
+
+      // Optionally, call getCurrentUserDetails to update user info from backend
+      getCurrentUserDetails(jwtoken)
+        .then(() => {
+          const updatedName = sessionStorage.getItem('Name'); // Fetch updated name from sessionStorage
+          setUsername(updatedName); // Update the username state
+          getUserCart();
+
+        })
+        .catch((error) => console.error(error));
     }
+    console.log(username);
 
+    
+  }, [isAuthenticated, dispatch]);
 
-},[dispatch])
-
+  
+  
   const handleLogout = () => {
 
     // Dispatch logout action
@@ -42,12 +65,7 @@ const Navbar = () => {
 
 
 
-
-   
-  
-
-  
-  return (
+ return (
     <div>
       <header id="header" className="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" className="navbar navbar-expand-lg px-3 mb-3">
@@ -94,6 +112,7 @@ const Navbar = () => {
                
                 <li className="nav-item dropdown">
                   <a className="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Become Seller</a>
+
                   <ul className="dropdown-menu">
                     <li>
                       <a href="about.html" className="dropdown-item">About</a>
@@ -121,6 +140,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </li>
+
                 <li className="nav-item">
                   <div className="user-items ps-5">
                     <ul className="d-flex justify-content-end list-unstyled">
@@ -139,12 +159,35 @@ const Navbar = () => {
                             <use xlinkHref="#user"></use>
                           </svg>
                         </a>):
-                        (   <>
-                          {/* <span>Hi,{username  }</span> */}
-                          <button onClick={handleLogout} >Logout</button>
-                        </>)
-}   
+                        (   
+                        <>
+                               <div
+                    className="dropdown-container"
+                    onMouseEnter={() => setDropdownOpen(true)}
+                    onMouseLeave={() => setDropdownOpen(false)}
+                  >
+                    <AccountCircleIcon fontSize="large"/>
+
+                    <span className="username">
+                      
+                      {username} <span className="arrow-down">▼</span>
+                    
+                    </span>
+
+                    
+                    {/* Dropdown Menu */}
+                    {isDropdownOpen && (
+                      <div className="dropdown-menu-custom">
+                        <button className="dropdown-item" onClick={handleLogout}>
+                          Logout
+                        </button>
+                      </div>
+                    )}
+
+                  </div>
+                    </>)}   
                       </li>
+
                       <li>
                         <a href="/cart" as={Link}>
                           <svg className="cart">
@@ -152,6 +195,7 @@ const Navbar = () => {
                           </svg>
                         </a>
                       </li>
+
                     </ul>
                   </div>
                 </li>
