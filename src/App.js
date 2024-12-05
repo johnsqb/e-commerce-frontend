@@ -20,6 +20,7 @@ import CheckOutPage from './pages/CheckOutPage.js';
 import ProductList from './pages/ProductList.js';
 
 import Unauthorized from './components/Unauthorized.js';
+import Success from './components/Success.js';
 
 function App() {
 
@@ -43,6 +44,8 @@ function App() {
             <Route   path='/postproduct-details/:id'  index element={<PostProductView />} />
             <Route   path='/checkout'   element={<CheckOutPage />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route path="/success" element={<Success />} />
+
 
           <Route 
             path='/cart' 

@@ -20,7 +20,7 @@ const Cart = () => {
 
 
   const cartId  = sessionStorage.getItem('CartId');
-  
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Cart = () => {
                   <div className="product-card position-relative">
                     <div key={product.id} className="dep">
                       {/* Ensure CartImage receives proper props if needed */}
-                      <CartImage />
+                      <CartImage  pro={product.products}/>
 
                       <CartProductDetails 
                         productName={product.products?.name || "Unknown Product"} 

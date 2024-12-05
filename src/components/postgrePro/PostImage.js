@@ -8,6 +8,14 @@ import { jwtDecode } from 'jwt-decode';
 
 const PostImage = (props) => {
 
+  const BASE_URL = 'http://localhost:8080';
+   
+  const  image = props.imageUrl;
+
+  const id =props.pro;
+
+  const filePath = image[0].filePath;
+
   const navigate = useNavigate();
   // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   // const [role, setRole] = useState('');
@@ -22,12 +30,12 @@ const PostImage = (props) => {
   // }, [isAuthenticated,token]);
 
 
-  const handleClick = (pro,url) => {
+  const handleClick = (id,url) => {
 
 
    
         
-        navigate(`/postproduct-details/${pro}`,{ state: { url } })
+        navigate(`/postproduct-details/${id}`,{ state: { url } })
         
        
     }
@@ -38,9 +46,9 @@ const PostImage = (props) => {
   return (
     <>
             <a>
-            <img  src={props.imageUrl}
+            <img  src={`${BASE_URL}${filePath}`} 
               alt="product-item" style={{width:'100%',height:'160px',objectFit:'contain',marginBottom:'10px',cursor:'pointer'}} className="imgs"  
-              onClick={()=>handleClick(props.pro,props.imageUrl)}  />
+              onClick={()=>handleClick(id,image)}  />
             </a>
 
 

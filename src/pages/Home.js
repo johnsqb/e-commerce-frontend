@@ -7,6 +7,7 @@ import Apps from "../components/product-carousel";
 import Prds from "../components/productsss";
 import Slide from "../components/slide";
 import Subscribe from "../components/Subscribe";
+import Footer from "../components/Footer";
 
 
 
@@ -20,7 +21,7 @@ const Home = () => {
   
   return (  
 
-    <div>
+    <div className="de">
 
       <div className="search-popup">
         <div className="search-popup-container">
@@ -74,9 +75,9 @@ const Home = () => {
      <Prds/>
       {/* <Service/> */}
 
-      <Mobilepro name={"Mobile products"} parent={3}/>
+      {/* <Mobilepro name={"Mobile products"} parent={3}/>
 
-      <Mobilepro name={" Smart watches" } parent={1}/>
+      <Mobilepro name={" Smart watches" } parent={1}/> */}
 
 
       {/* <YearlySale/> */}
@@ -86,7 +87,7 @@ const Home = () => {
       {/* <Blog/> */}
       
       <Subscribe/>
-      
+      <Footer/>
       {/* <Insta/> */}
       
     </div>

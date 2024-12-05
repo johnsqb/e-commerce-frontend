@@ -10,6 +10,7 @@ const PaymentOptions = () => {
     const navigate = useNavigate();
     const deliveryCharge = 50;
     const platformFee = 30;
+    const userId = sessionStorage.getItem('Id');
 
     
     const loadRazorpayScript = () => {
@@ -30,29 +31,36 @@ const PaymentOptions = () => {
     };
 
     useEffect(() => {
+
         const fetchOrderDetails = async () => {
+            
             try {
                 
                 await loadRazorpayScript();
-                const response = await axios.get('http://localhost:8080/api/orderDetails/getall');
+                const response = await axios.get(`http://localhost:8080/api/cart/getCartByUser?id=${userId}`);
 
                 const data = response.data;
+                console.log("hi my orders"+ data);
+                
                 if (data.length > 0) {
-                    setTotal(data[0].total);
+                    setTotal(data.total);
                 } else {
                     console.warn('No order details found');
                 }
             } catch (error) {
                 console.error('Failed to fetch order details:', error);
             }
+            console.log(total+"sum total");
+            
         };
 
         fetchOrderDetails();
-    }, []);
+    }, [userId]);
 
     const createOrder = async (total) => {
+
         try {
-            const response =await axios.post('http://localhost:8080/api/orderDetails/add?userId=1', { total });
+            const response =await axios.post(`http://localhost:8080/api/orderDetails/add?userId=${userId}`, { total });
             if (response.status !== 200) {
                 throw new Error('Failed to create order');
             }
@@ -64,9 +72,13 @@ const PaymentOptions = () => {
     };
 
     const handlePayClick = async () => {
+
         try {
-            const orderDetails = await createOrder(total * 100);
+
+            const orderDetails = await createOrder({total} * 100);
+            
             console.log('Order Details:', orderDetails);
+            
             const options = {
                 key: 'rzp_test_cWF3MY4jPZmK8Z',
                 amount: orderDetails.total,
@@ -101,8 +113,9 @@ const PaymentOptions = () => {
     };
 
     return (
-        
-            <div className="checkout-container">
+
+        <>
+
                 <div className="checkout-card">
                     <div className="header">
                         <h2>Payment Options</h2>
@@ -115,7 +128,7 @@ const PaymentOptions = () => {
                     </div>
                 </div>
     
-                <div className="price-details-card">
+                 <div className="price-details-card">
                     <div className="price-details-header">Price Details</div>
                     <div className="price-item">
                         <span>Price</span>
@@ -134,9 +147,9 @@ const PaymentOptions = () => {
                         <span>Amount Payable</span>
                         <span>₹{total+deliveryCharge+platformFee}</span>
                     </div>
-                </div>
-            </div>
+                </div> 
 
+            </>
     );
 };
 

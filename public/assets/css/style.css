@@ -105,23 +105,38 @@ p {
 /* ============================== */
 /* ========= Xzoom = (Start) ========================= */
 .xzoom_part{
-	padding-top: 50px;
-  padding-top: 160px;
+  padding: 1px;
+  background-color: #f9f9f9; /* Light background for better contrast */
+  min-height: 100vh; /* Ensures the section spans full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .xzoom_container{
-	margin: 0px 10px;
+    width: 100%;
+    max-width: 1200px; /* Limit container width */
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 20px; /* Add spacing between child elements */
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px; /* Optional rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  
   
 }
 .xzoom-thumbs{
 	margin: 10px 0;
 }
 .xzoom{
-	height: 460px;
+	height: 350px;
 	width: 100%;
 	box-shadow: 1px 4px 8px #aaa;
 }
 .xzoom-gallery{
 	border: 1px solid #aaa;
+  height: 70px;
 }
 .xzoom-gallery:hover{
 	border: 1px solid #378bbf;
@@ -1457,7 +1472,7 @@ input
       .container {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 20px;
+          padding: 100px;
       }
 
       /*product -carousel */

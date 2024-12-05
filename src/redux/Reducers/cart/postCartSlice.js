@@ -6,14 +6,14 @@ export const addToPostCartAsync = createAsyncThunk(
     async ({ productsId, cartId,quantity,productsSkuId }) => {
     //   const token = sessionStorage.getItem('jwtToken')
       const response = await axios.post(
-        `http://localhost:8080/api/cartItem/add?cartId=${cartId}&&productsId=${productsId}&&productsSkuId=${productsSkuId}`,
+        `http://localhost:8080/api/cartItem/add?cartId=${cartId}&productsId=${productsId}&productsSkuId=${productsSkuId}`,
         { quantity },
         {
-          params: {
-            cartId,
-            productsId,
-            productsSkuId,
-          },
+          // params: {
+          //   cartId,
+          //   productsId,
+          //   productsSkuId,
+          // },
           // headers: {
           //   Authorization: `Bearer ${token}`,
           // },
@@ -22,6 +22,7 @@ export const addToPostCartAsync = createAsyncThunk(
       return response.data;
     }
   );
+
   export const updateCartItemQuantity = createAsyncThunk(
     'postCart/updateCartItemQuantity',
     async ({ itemId, newQuantity }) => {

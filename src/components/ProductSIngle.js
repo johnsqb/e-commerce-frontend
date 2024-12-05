@@ -17,24 +17,26 @@ const ProductSIngle = (props) => {
   return (
 
 	
-    <div>
-	<Slide/>
+    <>
+	{/* <Slide/> */}
 
-		   <section className="xzoom_part">
-		<div className="container">
+		   {/* <section className="xzoom_part">
+		<div className="container"> */}
+
 			<div className="row">
 			<PostSelectedImage image={image}/>
 			<PostSelectedDetails  mrpprice={selectedPro.mrpPrice} sellingprice={selectedPro.price}
 								 name={selectedPro.name} desc={selectedPro.description} pro={selectedPro}/> 
+			
 			{/* <SelectedImage  image={image}/>
 				 {/* <SelectedImage  images={selectedPro.images}/> 
 				 <SelectedDetails mrpprice={selectedPro.mrpPrice} sellingprice={selectedPro.price}
 								 name={selectedPro.name} desc={selectedPro.description}/>  
 				 */}
 			</div>
-		</div>
-	</section>
-    </div>
+	</>
+	// </section>
+    // </div>
 	
   )
 }

@@ -4,54 +4,82 @@ import React, { useState } from 'react'
 
   const PostSelectedImage = (props) => {
 
-     const image = props.image
-    
-    // const images=[
-    //   '/assets/images/multicar.png',
-    //   '/assets/images/multicar0.jpeg',
-    //   '/assets/images/multicar3.jpeg',
-    //   '/assets/images/multicar4.jpeg',
-    // ]
+    const BASE_URL = 'http://localhost:8080';
+    const image = props.image || []; // Default to an empty array if undefined or null
+    const file = image.length > 0 ? image[0].filePath : ''; // Default to empty string if no images
 
-  // const [mainImage,setMainImage] = useState(images[1].imageUrl);
-  const [mainImage,setMainImage] = useState(image);
+    const [mainImage, setMainImage] = useState(file);
 
+    const handleThumbnailClick = (imageUrl) => {
+        console.log(imageUrl + ' clicked');
+        setMainImage(imageUrl); // Set the main image to the clicked thumbnail's imageUrl
+    };
 
-  const handleThumbnailClick = (imageUrl) => {
-    setMainImage(imageUrl); // Set the main image to the clicked thumbnail's imageUrl
-  };
+    return (
+        <>
+            <div className="col-md-6 col-sm-12">
+                <div className="xzoom_container">
+                    {/* <ReactImageMagnify {...{
+    smallImage: {
+        alt: 'Wristwatch by Ted Baker London',
+        isFluidWidth: true,
+        src:`${BASE_URL}${mainImage}`,
+    },
+    largeImage: {
+        src:`${BASE_URL}${mainImage}`,
+        width: 1200,
+        height: 1800
+    }
+}} /> */}
+                        {/* <ReactImageMagnify {...{
+                            smallImage:{
+                                alt="product image",
+                                isFluidWidth: true,
+                                src={`${BASE_URL}${mainImage}`}
+                            },
+                            largeImage:{
+                                src={`${BASE_URL}${mainImage}`},
+                                width:
+                            }*/}
+                <img
+                    
+                    alt={`Thumbnai`}
+                    className="xzoom"
+                    src={`${BASE_URL}${mainImage}`}
 
-  
-  return (
-    <>
-      <div className="col-md-6 col-sm-12">
-					<div className="xzoom_container">
-						
-           		 {/* <img src={images[1].imageUrl} alt="main image" className="xzoom" id="xzoom-default"/> */}
+                     id="xzoom-default"
+                   
+                    
+                
+                     /> 
 
-                <img src={mainImage} alt="main image" className="xzoom" id="xzoom-default"/>
-						
-						     {/*<div className="xzoom-thumbs">
+                    <div className="xzoom-thumbs">
+                        {image.length > 0 ? (
+                            image.map((imag, index) => (
+                               
+                                <a
+                                    key={index}
+                                    
+                                    onClick={() => handleThumbnailClick(imag.filePath)}
+                                  
+                                > 
+                                    <img
+                                        src={`${BASE_URL}${imag.filePath}`}
+                                        alt={`Thumbnail ${index + 1}`}
+                                        style={{ cursor: 'pointer' }}
 
-        
-           {images.map((image, index) => (
-            <a key={index} href="#" onClick={() => handleThumbnailClick(image)}>
-              <img src={image} alt={`Thumbnail ${index + 1}`} className="xzoom-gallery" width="80" />
-            </a>))}  */}
-                         {/* <a href="#" >
-                  <img src={images[1].imageUrl} alt="1st sub" className="xzoom-gallery" width="80" />
-                </a>
-                <a href={`${process.env.PUBLIC_URL}/assets/images/post-item2.jpg`}>
-                  <img src={images[0].imageUrl} alt="2nd sub" className="xzoom-gallery" width="80" />
-                </a>
-                <a href={`${process.env.PUBLIC_URL}/assets/images/insta-item4.jpg`}>
-                  <img src={images[2].imageUrl} alt="3rd sub" className="xzoom-gallery" width="80" />
-                </a>  
-						</div>*/}
-					</div>
-				</div>
-    </>
-  )
-}
-
+                                        className="xzoom-gallery"
+                                        width="80"
+                                    />
+                                </a>
+                            ))
+                        ) : (
+                            <span>No images available</span>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
 export default PostSelectedImage

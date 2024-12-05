@@ -11,27 +11,38 @@ const OrderSummary = () => {
   const cartItems = useSelector((state) => state.postCart.postCartItems) || [] ;
   const totalAmount = useSelector(state => state.cart.totalAmount);
 
+  const cartId  = sessionStorage.getItem('CartId');
+  
+  const BASE_URL = 'http://localhost:8080';
+
   useEffect(() => {
-    dispatch(fetchPostCartItems());
-    
+    dispatch(fetchPostCartItems({cartId}));
+
   }, [dispatch]);
+
+
   const handleRemoveItem = (itemId) => {
     dispatch(deletePostCartItems({ product_id: itemId })); // Ensure you're passing the correct payload
 };
+
 
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity > 0) { // Prevent quantity from being less than 1
       dispatch(updateCartItemQuantity({ itemId, newQuantity }));
     }
   };
+
     const incrementQuantity = (itemId, currentQuantity) => {
       handleQuantityChange(itemId, currentQuantity + 1);
     };
+
+
     const decrementQuantity = (itemId, currentQuantity) => {
       if (currentQuantity > 1) {
         handleQuantityChange(itemId, currentQuantity - 1);
       }
     };
+    
   
 
   return (
@@ -48,7 +59,7 @@ const OrderSummary = () => {
             <div className="cart-item">
             <div className="product-image">
             <img 
-               src="https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?cs=srgb&dl=pexels-craigmdennis-205421.jpg&fm=jpg"// Use the relative path from the 'public' folder
+               src={`${BASE_URL}${item.products.image[0].filePath}`}// Use the relative path from the 'public' folder
                className="product-img"
               alt="Product" // Always include an alt attribute for accessibility
              />

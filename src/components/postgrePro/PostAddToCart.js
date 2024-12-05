@@ -14,16 +14,19 @@ const PostAddToCart = (props) => {
   const [pincode, setPincode] = useState('');
   const [deliveryAvailable, setDeliveryAvailable] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [cartId,setCartId] = useState('');
-
+  
   useEffect(() => {
+
+
     if (isAuthenticated && token) {
       
       try {
+
         const decoded = jwtDecode(token);
         if (decoded.role && Array.isArray(decoded.role) && decoded.role[4]) {
           setRole(decoded.role[4].authority); // Access the 'authority' field
         }
+
       } catch (error) {
         console.error("Error decoding token:", error);
       }
@@ -36,30 +39,45 @@ const PostAddToCart = (props) => {
 
   const checkPincodeDelivery = async (productId, pinCode) => {
     
+
     try {
       console.log(pincode +" "+  productId);
       
       const response = await axios.get(`http://localhost:8080/api/productpincodes/checkDelivery`, {
+
         params: { productId, pinCode },
+
       });
-      console.log(response.data);
+
+      console.log(response.data + "pincode delivery");
       
       return response.data; // Adjust to your API response
+
     } catch (error) {
-      console.error("Error checking delivery availability:", error);
+
+      console.error("Error checking delivery availability:" , error);
+
       return false;
     }
   };
 
+
   const handleCheckDelivery = async () => {
+
     setLoading(true);
+
     setDeliveryAvailable(null);
+
     try {
+
       const deliveryPossible = await checkPincodeDelivery(props.product.id, pincode);
       
       setDeliveryAvailable(deliveryPossible);
+
     } catch (error) {
+
       console.error("Error checking delivery:", error);
+
     } finally {
       setLoading(false);
     }
@@ -67,34 +85,50 @@ const PostAddToCart = (props) => {
 
   const handleAddToCart = async (product, quantity) => {
     
+    console.log(product.productsSkus[0].id+" "+quantity);
+    const skuid = product.productsSkus[0].id;
     
     if (!isAuthenticated) {
       navigate('/login');
       return;
     }
+
     
     if (role !== "ROLE_CUSTOMER") {
       alert("Please login as a user to add items to the cart.");
       return;
     }
 
+
     if (deliveryAvailable) {
+
       try {
+
         await dispatch(addToPostCartAsync({
+
           productsId: product.id,
-          cartId: sessionStorage.getItem(cartId), // You may want to dynamically fetch or manage this cartId
+          cartId: sessionStorage.getItem('CartId'), // You may want to dynamically fetch or manage this cartId
           quantity,
-          productsSkuId: product.productsSkus[0].id
-        }));
+          productsSkuId: skuid
+
+      }));
+
         alert("Product added to cart");
+
       } catch (error) {
+
         console.error("Error adding product to cart:", error);
         alert("There was an issue adding the product to your cart.");
+
       }
-    } else {
+    } 
+    else {
+
       alert(`Delivery not available for pincode: ${pincode}`);
+
     }
   };
+
 
   return (
     <>
@@ -108,6 +142,7 @@ const PostAddToCart = (props) => {
           onChange={(e) => setPincode(e.target.value.replace(/\D/g, ''))} // Allow only numeric input
           disabled={loading}
         />
+
         <button onClick={handleCheckDelivery} disabled={loading || !pincode}>
           {loading ? "Checking..." : "Check Delivery"}
         </button>
@@ -126,7 +161,13 @@ const PostAddToCart = (props) => {
       >
         Add To Cart
       </button>
-      <a href="#;" className="btncar"> Check Out </a>
+      <button
+        className={`btncar ${deliveryAvailable === false ? "disabled" : ""}`}
+        onClick={() => deliveryAvailable && handleAddToCart(props.product, props.quantity)}
+        disabled={deliveryAvailable === false || deliveryAvailable === null}
+      >
+        Checkout
+      </button>
     </>
   );
 };
