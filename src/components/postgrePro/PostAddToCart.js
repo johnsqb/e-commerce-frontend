@@ -85,7 +85,7 @@ const PostAddToCart = (props) => {
 
   const handleAddToCart = async (product, quantity) => {
     
-    console.log(product.productsSkus[0].id+" "+quantity);
+    console.log(product.productsSkus[0]+" "+quantity);
     const skuid = product.productsSkus[0].id;
     
     if (!isAuthenticated) {
@@ -161,13 +161,13 @@ const PostAddToCart = (props) => {
       >
         Add To Cart
       </button>
-      <button
+      {/* <button
         className={`btncar ${deliveryAvailable === false ? "disabled" : ""}`}
         onClick={() => deliveryAvailable && handleAddToCart(props.product, props.quantity)}
         disabled={deliveryAvailable === false || deliveryAvailable === null}
       >
         Checkout
-      </button>
+      </button> */}
     </>
   );
 };

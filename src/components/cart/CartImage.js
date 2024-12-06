@@ -9,6 +9,8 @@ const CartImage = (props) => {
 
   const product = props.pro;
   const  image = product.image;
+  console.log(image[0].imageName);
+  
   const filePath = product.image[0].filePath;
 
   const handleClick = (id,url) => {

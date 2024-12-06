@@ -20,6 +20,7 @@ const OrderSummary = () => {
 
   }, [dispatch]);
 
+console.log(cartItems);
 
   const handleRemoveItem = (itemId) => {
     dispatch(deletePostCartItems({ product_id: itemId })); // Ensure you're passing the correct payload
@@ -59,12 +60,12 @@ const OrderSummary = () => {
             <div className="cart-item">
             <div className="product-image">
             <img 
-               src={`${BASE_URL}${item.products.image[0].filePath}`}// Use the relative path from the 'public' folder
-               className="product-img"
-              alt="Product" // Always include an alt attribute for accessibility
-             />
-             
-
+            src={`${BASE_URL}${item.products?.image?.[0]?.filePath || ''}`}
+            className="product-img"
+            alt="Product"
+            />
+  
+                
 
                   <div className="product-quantity">
                     <button 

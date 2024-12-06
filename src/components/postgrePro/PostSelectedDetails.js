@@ -13,6 +13,7 @@ const PostSelectedDetails = (props) => {
 	
 	 const price = props.sellingprice;
  
+	console.log(props.pro);
 	
 
 	// const handleIncrement = ()=>{

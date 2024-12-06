@@ -45,6 +45,8 @@ export const addToPostCartAsync = createAsyncThunk(
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log(response.data +" inside cart slice");
+        
         return response.data;
       } catch (error) {
         console.error('Error fetching products:', error);
