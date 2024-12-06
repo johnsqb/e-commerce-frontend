@@ -22,6 +22,15 @@ import JwtDecode from './redux/utils/JwtDecode.js';
 import Layout from './Layout.js';
 import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
 import ProductList from './pages/ProductList.js';
+import {Data} from './components/Data.js';
+// import { Card } from '@mui/material';
+import Card from './components/Card.js';
+import Filter from './components/filter.js';
+import Filters from './filters.js';
+import Cards from './cards1.js';
+import MultiFilters from './MultiFilters.js';
+
+
 
 
 
@@ -51,8 +60,35 @@ function App() {
           </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/prolist' element={<ProductList />} />   {/*product list new*/}
+         
       </Route>
+      
     </Routes>
+    
+    {/* <MultiFilters/> 
+    {/* <div className='fls'>
+      <Filter/>
+      </div> */}
+    
+    
+    {/* {  
+      <div>
+        
+      <div>
+    {Data.map(item=>(
+      <Card image={item.image} name={item.name} rating={item.rating} actualPrice={item.actualPrice} offerPrice={item.offerPrice}/>
+      
+    ))}
+    </div>
+    </div>
+    
+} */}
+
+
+{/* <Filters/>
+
+<Cards/> */}
+
   </BrowserRouter>
    
     // <BrowserRouter>
@@ -77,10 +113,13 @@ function App() {
 
     // </Routes>
     // </BrowserRouter>
-
+     
+     
+     
    
     
   );
+  
 }
 
 export default App;
