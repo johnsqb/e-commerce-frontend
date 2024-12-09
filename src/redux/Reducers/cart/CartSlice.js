@@ -1,6 +1,34 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+export const addUserToCart = (userId) => async (dispatch,{rejectWithValue }) => {
+ 
+  console.log(userId);
+  
+
+  try {
+    
+    const response = await axios.post(`http://localhost:8080/api/cart/add?userId=${userId}` );
+    // const token  = response.data.access_token; // Assuming the API response contains a token field
+    // console.log(token);
+
+    return response.data;
+    // dispatch(authSuccess({ token }));
+    // sessionStorage.setItem('jwtToken', token); // Store token in localStorage
+
+    // console.log('Calling getCurrentUserDetails with token:', token); // Add this line to check if the function is being called
+    // await getCurrentUserDetails(token);
+
+  }catch (error) {
+    if (error.response && error.response.data) {
+      return rejectWithValue(error.response.data.message);
+    }
+    throw error;
+  }
+};
+
+
 export const addToCartAsync = createAsyncThunk(
     "cart/addToCartAsync",
     async ({ product_id, quantity} ,{rejectWithValue }) => {

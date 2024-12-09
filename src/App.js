@@ -21,6 +21,7 @@ import ProductList from './pages/ProductList.js';
 
 import Unauthorized from './components/Unauthorized.js';
 import Success from './components/Success.js';
+import Register from './pages/Register.js';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
             <Route   path='/checkout'   element={<CheckOutPage />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
             <Route path="/success" element={<Success />} />
+            <Route path="/reg" element={<Register />} />
 
 
           <Route 

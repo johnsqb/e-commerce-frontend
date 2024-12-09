@@ -14,7 +14,7 @@ const PostImage = (props) => {
 
   const id =props.pro;
 
-  const filePath = image[0].filePath;
+  const filePath = image?.[0]?.filePath || "/default-image-path.jpg";
 
   const navigate = useNavigate();
   // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);

@@ -86,4 +86,27 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+export const register = (formData) => async (dispatch) => {
+  console.log(formData);
+  
+  dispatch(authStart());
+
+  try {
+    
+    const response = await axios.post('http://localhost:8080/ecommerce/v1/auth/register',  formData );
+    // const token  = response.data.access_token; // Assuming the API response contains a token field
+    // console.log(token);
+
+    return response.data;
+    // dispatch(authSuccess({ token }));
+    // sessionStorage.setItem('jwtToken', token); // Store token in localStorage
+
+    // console.log('Calling getCurrentUserDetails with token:', token); // Add this line to check if the function is being called
+    // await getCurrentUserDetails(token);
+
+  } catch (error) {
+    dispatch(authFail(error.message));
+  }
+};
+
 export default authSlice.reducer;

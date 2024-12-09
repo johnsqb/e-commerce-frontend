@@ -53,7 +53,6 @@ const MultiCarousell = () => {
 
   const cards = products.map((product,index)=>{
 
-    console.log(product.image[0].filePath + "inside prdcarousel");
     
     return (
       <div key={product.id} className="de">
