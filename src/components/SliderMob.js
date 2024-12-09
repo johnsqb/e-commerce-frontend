@@ -1,9 +1,9 @@
 import React from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect } from 'react';
-import { useDispatch ,useSelector} from 'react-redux';
-import {getProducts} from '../redux/Reducers/product/ProductApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { getProducts } from '../redux/Reducers/product/ProductApi';
 import StatusCode from '../redux/utils/StatusCode';
 
 
@@ -12,13 +12,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 // import required modules
-import { Navigation } from 'swiper/modules';
-import { Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 
 //import components
-import ProductDetails from './products/ProductDetails';
-import Image from './products/Image';
 import AddToCart from './products/AddToCart';
+import Image from './products/Image';
+import ProductDetails from './products/ProductDetails';
 
 
 

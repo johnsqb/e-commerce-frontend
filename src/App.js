@@ -1,7 +1,7 @@
-import React from 'react'
-import { useEffect } from "react"
+import React from 'react';
 
 import Home from './pages/Home.js';
+import PostProductView from './pages/PostProductView.js';
 import ProductView from './pages/ProductView.js';
 
 // Import Bootstrap CSS
@@ -10,17 +10,13 @@ import ProductView from './pages/ProductView.js';
 // Import Bootstrap JavaScript
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Navbar from './components/Navbar.js';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cart from './pages/Cart.js';
-import Footer from './components/Footer.js';
-import Slide from './components/slide.js';
-import Carousell from './components/Carousel.js';
 import Login from './pages/Login.js';
  
-import JwtDecode from './redux/utils/JwtDecode.js';
 import Layout from './Layout.js';
 import ProtectedRoutes from './components/protectedRoutes/PotectedRoutes.js';
+import CheckOutPage from './pages/CheckOutPage.js';
 import ProductList from './pages/ProductList.js';
 import {Data} from './components/Data.js';
 // import { Card } from '@mui/material';
@@ -32,13 +28,15 @@ import MultiFilters from './MultiFilters.js';
 
 
 
-
+import Unauthorized from './components/Unauthorized.js';
+import Success from './components/Success.js';
+import Register from './pages/Register.js';
 
 function App() {
 
   const token = sessionStorage.getItem('JwtToken');
   
-   
+  
   
 
   
@@ -50,11 +48,20 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
+
       
-            <Route   path='/product-details/:id'  index element={<ProductView />} />
+            <Route   path='/product-details/:id'   element={<ProductView />} />
+            <Route   path='/postproduct-details/:id'  index element={<PostProductView />} />
+            <Route   path='/checkout'   element={<CheckOutPage />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/reg" element={<Register />} />
+
+
           <Route 
             path='/cart' 
-            element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_USER']} />}
+            element={<ProtectedRoutes allowedRoles={['ROLE_ADMIN','ROLE_CUSTOMER']} />}
+
           >
             <Route index element={<Cart />} />
           </Route>

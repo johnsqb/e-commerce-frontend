@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -16,4 +17,5 @@ code {
 .main-content{
 
   padding-top: 90px;
+
 }

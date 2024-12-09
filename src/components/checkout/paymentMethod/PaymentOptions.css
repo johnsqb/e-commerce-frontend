@@ -1,0 +1,85 @@
+/* Main container layout */
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Center the content and limit the total width */
+}
+
+/* Checkout card for the payment options section */
+.checkout-card {
+  width: 65%; /* Increase width */
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+  background-color: white;
+  border-radius: 8px;
+}
+
+/* Price details section */
+.price-details-card {
+  width: 32%; /* Increase width */
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  position: fixed; /* Fixed position */
+  top: 120px;      /* Adjust this to align with the login or payment section */
+  right: 20px;     /* Align it to the right side */
+  z-index: 100;    /* Ensure it stays on top of other content */
+  margin-top: 20px;
+}
+
+/* Price details header */
+.price-details-header {
+  font-size: 22px; /* Increase font size */
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Price items */
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.price-item-total {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Pay Now button */
+.pay-button {
+  background-color: #084a60; /* Light blue */
+  color: white;
+  padding: 20px 40px; /* Larger padding */
+  font-size: 20px;    /* Bigger font */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #287aa9; /* Darker blue on hover */
+}
+
+/* Make the price details card and checkout card responsive */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+
+  .checkout-card, .price-details-card {
+    width: 100%;
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 20px;
+  }
+
+  .pay-button {
+    width: 100%; /* Make the button full width on small screens */
+  }
+}

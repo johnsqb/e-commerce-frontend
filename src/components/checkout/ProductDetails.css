@@ -1,0 +1,49 @@
+.product-detail-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .product-detail {
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-name {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .product-price,
+  .product-charges,
+  .product-total {
+    margin-bottom: 20px;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-control button {
+    padding: 5px 10px;
+    font-size: 1.2em;
+    margin: 0 5px;
+  }
+  
+  .quantity-control input {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    font-size: 1em;
+  }
+  
+  .product-total h2 {
+    font-size: 1.3em;
+    color: #333;
+  }
+  

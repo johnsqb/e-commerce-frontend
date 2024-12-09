@@ -14,7 +14,9 @@ const ProductView = () => {
   
 
   if (status === 'loading' || !products) {
+
     return <div>Loading...</div>;
+
   }
 
   
@@ -22,7 +24,9 @@ const ProductView = () => {
 
 
   if (!selectedProduct) {
+
     return <div>product not found</div>; // Handle case where product is not found
+    
   }
 
   return (

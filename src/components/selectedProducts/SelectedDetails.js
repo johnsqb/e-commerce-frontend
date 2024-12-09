@@ -1,12 +1,15 @@
 import React from 'react'
 
 const SelectedDetails = (props) => {
-  return (
+ 
+	
+	
+	return (
     <>
         <div className="col-md-6 col-sm-12">
 					<div className="xzoom_details">
 						<h4>{props.name}</h4>
-						<h3><span>{props.mrpprice}</span> {props.sellingprice} </h3>
+						<h3> {props.sellingprice} </h3>
 						<p><i className="fas fa-star"></i>
 							<i className="fas fa-star"></i>
 							<i className="fas fa-star"></i>

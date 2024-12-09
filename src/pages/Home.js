@@ -1,22 +1,14 @@
-import { useEffect } from "react";
-import Blog from "../components/Blog";
-import Footer from "../components/Footer";
-import LatestPost from "../components/LatestPost";
+import { React } from "react";
 import Mobilepro from "../components/Mobilepro";
-import Navbar from "../components/Navbar";
-import Service from "../components/Service";
 // import ShopPro from "../components/ShopPro";
-import Subscribe from "../components/Subscribe";
-import Watchpro from "../components/Watchpro";
-import YearlySale from "../components/YearlySale";
-import Insta from "./Insta";
-import Apps from "../components/product-carousel";
-import { Carousel } from "bootstrap";
+import Carousell from "../components/Carousel";
 import MultiCarousell from "../components/prdcarousel";
-import MultiCarousells from "../components/productsss";
+import Apps from "../components/product-carousel";
 import Prds from "../components/productsss";
 import Slide from "../components/slide";
-import Carousell from "../components/Carousel";
+import Subscribe from "../components/Subscribe";
+import Footer from "../components/Footer";
+
 
 
 
@@ -29,7 +21,7 @@ const Home = () => {
   
   return (  
 
-    <div>
+    <div className="de">
 
       <div className="search-popup">
         <div className="search-popup-container">
@@ -72,7 +64,7 @@ const Home = () => {
 
     
  
-    
+    <Slide/>
        <Carousell /> 
       {/* <ShopPro/> */}
       <MultiCarousell/>
@@ -83,9 +75,9 @@ const Home = () => {
      <Prds/>
       {/* <Service/> */}
 
-      <Mobilepro name={"Mobile products"} parent={3}/>
+      {/* <Mobilepro name={"Mobile products"} parent={3}/>
 
-      <Mobilepro name={" Smart watches" } parent={1}/>
+      <Mobilepro name={" Smart watches" } parent={1}/> */}
 
 
       {/* <YearlySale/> */}
@@ -95,7 +87,7 @@ const Home = () => {
       {/* <Blog/> */}
       
       <Subscribe/>
-      
+      <Footer/>
       {/* <Insta/> */}
       
     </div>

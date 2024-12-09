@@ -1,0 +1,71 @@
+.checkout-card {
+    padding: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    flex-direction: row; /* Horizontal layout for image and details */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0; /* Space between items */
+  }
+  
+  .product-image {
+    flex: 1; /* Make image section take up more space */
+    margin-right: 20px; /* Space between image and details */
+  }
+  
+  .product-details {
+    flex: 2; /* Make details section take up more space */
+  }
+  
+  .product-img {
+    width: 70%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .product-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Space above the quantity controls */
+  }
+  
+  .quantity-button {
+    background-color: #f0f0f0; /* Button styles */
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .quantity-input {
+    width: 40px; /* Set a fixed width for the input */
+    text-align: center; /* Center the number */
+    margin: 0 10px; /* Space around the input */
+  
+    /* Remove browser arrows for Chrome, Safari, Edge, and Opera */
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  /* Remove arrows for Firefox */
+  .quantity-input::-webkit-inner-spin-button,
+  .quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Additional for Internet Explorer */
+  /* input[type=number] {
+    -moz-appearance: textfield;
+  } */
+  
+  .remove-button {
+    margin-top: 10px; /* Space above the remove button */
+    background-color: #ff4d4d; /* Red color for remove */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

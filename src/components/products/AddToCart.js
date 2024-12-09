@@ -16,8 +16,8 @@ const AddToCart = (props) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [role, setRole] = useState('');
   const token = sessionStorage.getItem('jwtToken');
-  const [quantity, setQuantity] = useState(1); // Default quantity to 1
-
+  const [quantity] = useState(1); // Default quantity to 1
+  
 
 
   useEffect(() => {
@@ -40,8 +40,9 @@ const AddToCart = (props) => {
     } else {
       if (role === "ROLE_USER") {
         dispatch(addToCartAsync({ product_id: product.id, quantity }));
-        alert("product added to cart");
-
+        
+        // alert("product added to cart");
+        
           
         }
        else {
@@ -54,12 +55,13 @@ const AddToCart = (props) => {
     <div>
          <div className="cart-concern position-absolute">
                     <div className="cart-button d-flex">
-                      <a href="#" className="btn btn-medium btn-black" onClick={()=>ToCart(props.product)}>
-                           Add to Cart
-                          <svg className="cart-outline">
-                          <use xlinkHref="#cart-outline"></use>
-                          </svg>
-                      </a>,
+                    <button className="btn btn-medium btn-black" onClick={() => ToCart(props.product)}>
+  Add to Cart
+  <svg className="cart-outline">
+    <use xlinkHref="#cart-outline"></use>
+  </svg>
+</button>
+,
                     </div>
             </div>
     </div>

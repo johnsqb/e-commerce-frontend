@@ -1,0 +1,110 @@
+.checkout-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin: 20px;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .step-number {
+    font-size: 20px;
+    margin-right: 10px;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 50%;
+  }
+  
+  .content {
+    margin-top: 20px;
+  }
+  
+  .cart-swiper {
+    margin-bottom: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    margin: 15px 0;
+    background-color: #fafafa;
+  }
+  
+  .product-image img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .product-details {
+    text-align: center; /* Center the text inside the details section */
+  }
+  
+  .product-name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .product-price {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .product-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .quantity-button {
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+  }
+  
+  .quantity-button:hover {
+    background-color: #ddd;
+  }
+  
+  .quantity-input {
+    width: 40px;
+    text-align: center;
+    height: 30px;
+    border: 1px solid #ccc;
+  }
+  
+  .quantity-input.small-input {
+    width: 40px;
+  }
+  
+  .remove-button {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .remove-button:hover {
+    background-color: #ff7875;
+  }
+  
+  .total-amount {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+  }
+  

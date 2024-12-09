@@ -1,8 +1,21 @@
 import React, { useState } from 'react'
 
-const SelectedImage = ({images}) => {
+// const SelectedImage = ({images}) => {
+
+  const SelectedImage = (props) => {
+
+     const images = props.images
+    
+    // const images=[
+    //   'assets/images/multicar.png',
+    //   'assets/images/multicar0.jpeg',
+    //   'assets/images/multicar3.jpeg',
+    //   'assets/images/multicar4.jpeg',
+    // ]
 
   const [mainImage,setMainImage] = useState(images[1].imageUrl);
+  // const [mainImage,setMainImage] = useState(images[2]);
+
 
   const handleThumbnailClick = (imageUrl) => {
     setMainImage(imageUrl); // Set the main image to the clicked thumbnail's imageUrl
@@ -18,14 +31,14 @@ const SelectedImage = ({images}) => {
 
                 <img src={mainImage} alt="main image" className="xzoom" id="xzoom-default"/>
 						
-						<div className="xzoom-thumbs">
+						     <div className="xzoom-thumbs">
 
         
-               {images.map((image, index) => (
-            <a key={index} href="#" onClick={() => handleThumbnailClick(image.imageUrl)}>
-              <img src={image.imageUrl} alt={`Thumbnail ${index + 1}`} className="xzoom-gallery" width="80" />
-            </a>))} 
-                        {/* <a href="#" >
+           {images.map((image, index) => (
+            <a key={index} href="#" onClick={() => handleThumbnailClick(image)}>
+              <img src={image} alt={`Thumbnail ${index + 1}`} className="xzoom-gallery" width="80" />
+            </a>))}  
+                         {/* <a href="#" >
                   <img src={images[1].imageUrl} alt="1st sub" className="xzoom-gallery" width="80" />
                 </a>
                 <a href={`${process.env.PUBLIC_URL}/assets/images/post-item2.jpg`}>
@@ -33,10 +46,11 @@ const SelectedImage = ({images}) => {
                 </a>
                 <a href={`${process.env.PUBLIC_URL}/assets/images/insta-item4.jpg`}>
                   <img src={images[2].imageUrl} alt="3rd sub" className="xzoom-gallery" width="80" />
-                </a> */}
-						</div>
+                </a>  
+						</div>*/}
 					</div>
 				</div>
+        </div>
     </>
   )
 }
