@@ -1693,6 +1693,11 @@ transition: 500ms;
     height:300px ;
   }
 }
+/* Footer */
+#footer{
+padding-top: 40px;
+}
+
 
 .dep {
   display: flex;
@@ -1767,3 +1772,4 @@ transition: 500ms;
 .nav-link:hover {
   color: #ffeb3b;
 }
+

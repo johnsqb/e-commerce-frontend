@@ -51,7 +51,7 @@ const Apps = () => {
                 <h1 className='top'>Top Hottest Products</h1>
                 <p>
                     <span onClick={leftMover} ref={el => spanRef.current[0] = el}>&#139;</span>
-                    <span onClick={rightMover} ref={el => spanRef.current[1] = el}>&#155;<i></i></span>
+                    <span onClick={rightMover} ref={el => spanRef.current[1] = el}>&#155;</span>
                 </p>
             </header>
             <div className='prod'>

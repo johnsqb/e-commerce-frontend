@@ -1,0 +1,73 @@
+.card>.card__image>img{
+    width:300px;
+    height: 150px;
+    object-fit: contain;
+    
+}
+.card__heart{
+    float:right;
+    color: lightgray;
+}
+.card__details>p{
+ padding: 0;
+ margin: 0;
+}
+.card__details>.title{
+  font-weight: 600;
+  font-size: 17px;
+  color: rgba(165, 165, 165);
+ 
+}
+.card :hover{
+    color: green;
+}
+.card__details>p{
+    font-size: 14px;
+}
+.card__details>.span1{
+    font-weight: bold;
+}
+.card__details>.span2{
+    color:grey;
+    padding-left: 7px;
+    text-decoration: line-through;
+}
+.card__details>.span3{
+    padding-left: 7px;
+    color: rgb(2,98,2);
+    font-size: 14px;
+    font-weight: 600;
+}
+.PrdDet{
+    position: relative;
+    transition: 0.5s;
+}
+.PrdDet>.card__size{
+    position: absolute;
+    opacity: 0;
+}
+.card:hover .PrdDet{
+    transform: translateY(-27%);
+    transition: 0.5s;
+}
+.card:hover .PrdDet>.card__size{
+    opacity: 1;
+}
+.card{
+    padding: 20px;
+}
+.card>.dots{
+    width: 10px;
+    height: 10px;
+    color: gray;
+}
+.cards{
+    background-color: white;
+border: 1px solid #eeecec;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+-moz-box-shadow: 0 0 10px #bdbdbd;
+-webkit-box-shadow: 0 0 10px #bdbdbd;
+box-shadow: 0 0 10px #bdbdbd;
+margin-left: 500px;
+}

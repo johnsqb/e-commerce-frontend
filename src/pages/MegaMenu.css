@@ -1,0 +1,114 @@
+.mega-menu {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .menu-button {
+    background-color: transparent;
+    color:black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: Inter,-apple-system,Helvetica,Arial,sans-serif;
+    font-weight: 500;
+  }
+  .menu-content {
+   
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 1400px; /* Ensure it spans the width of the container */
+    max-width: 1200px; /* Limit the max width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  .menu-category {
+    margin-right: 20px;
+    padding-right:70px;
+    padding-left: 10px;
+    width: 500px;
+    
+  }
+  
+  .menu-category h3 {
+    margin-top: 0;
+    font-size: 13px;
+    /* font-weight: normal; */
+    padding-bottom: 15px;
+    padding-top: 20px;
+    font-weight: bolder;
+  }
+  
+  .menu-category ul {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+  
+  .menu-category li {
+    margin: 5px 0;
+  }
+  
+  .menu-category a {
+    text-decoration: none;
+    /* color: #007bff; */
+    display: block; /* Make the entire area of the link clickable */
+    padding: 5px 0; /* Add padding for better click area */
+    /* padding: 5px 0; */
+    color: #666;
+    font-size: 13px;
+  }
+  
+  /* .menu-category a:hover {
+    text-decoration: underline;
+  } */
+  .menu-category1{
+    background-color: #f9f9f9;
+    margin-right: 20px;
+    padding-right: 10px;
+    padding-right: 15px;
+    width: 700px;
+    padding-left: 20px;
+    
+  }
+
+  .menu-category1 h3 {
+    margin-top: 0;
+    font-size: 13px;
+    /* font-weight: normal; */
+    padding-bottom: 15px;
+    padding-top: 20px;
+    font-weight: bolder;
+  }
+  
+  .menu-category1 ul {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+  
+  .menu-category1 li {
+    margin: 5px 0;
+  }
+  
+  .menu-category1 a {
+    text-decoration: none;
+    /* color: #007bff; */
+    display: block; /* Make the entire area of the link clickable */
+    padding: 5px 0; /* Add padding for better click area */
+    /* padding: 5px 0; */
+    color: #666;
+    font-size: 13px;
+  }
+  .bw{
+    font-weight: bolder;
+  }
+ 

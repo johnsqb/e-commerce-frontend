@@ -1,0 +1,10 @@
+.Menus{
+    background-color: white;
+    border: 1px solid #eeecec;
+    width: 1518px;
+    /* -moz-box-shadow: 0 0 10px #bdbdbd;
+-webkit-box-shadow: 0 0 10px #bdbdbd; */
+    box-shadow: 0 0 6px #cdcdcd;
+    padding-left: 200px;
+
+}
