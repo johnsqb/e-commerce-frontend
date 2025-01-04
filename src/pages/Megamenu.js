@@ -82,7 +82,8 @@ const MegaMenu = () => {
               <li><a href="#link6" onClick={() => console.log('Option 6 clicked')}>Smart Watches</a></li>
             </ul>
           </div>
-          <div className="menu-category">
+
+          {/* <div className="menu-category">
             <h3>Mobile Accessories</h3>
             <ul>
               <li><a href="#link4" onClick={() => console.log('Option 4 clicked')}>Mobile Cases</a></li>
@@ -94,7 +95,8 @@ const MegaMenu = () => {
               <li><a href="#link6" onClick={() => console.log('Option 6 clicked')}>Mobile Holder</a></li>
               <li><a href="#link6" onClick={() => console.log('Option 6 clicked')}>Smart Watches</a></li>
             </ul>
-          </div>
+          </div> */}
+          
 
           {/* <div className="menu-category">
             <h3>Category 2</h3>

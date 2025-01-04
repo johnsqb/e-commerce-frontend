@@ -25,6 +25,7 @@ const PaymentSuccess = () => {
   if (!orderDetails) {
     return <p>Loading...</p>;
   }
+  
 
   return (
     <div className="payment-success">

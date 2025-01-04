@@ -4,10 +4,16 @@ import MegaMenu from './Megamenu'
 import './Menu.css'
 import SubMenu from './Submenu'
 import SubMenus from './Submenu1'
-
+import { useLocation } from 'react-router-dom'
 
 
 const ProductList = () => {
+  const location = useLocation();
+
+  const category = location.state?.categoryName;
+
+  console.log(category+ "insidr product list page");
+  
   return (
     <>
     {/* <h1>product list</h1> */}
@@ -16,7 +22,7 @@ const ProductList = () => {
     <SubMenu/>
     <SubMenus/>
     </div> 
-    <MultiFilters/>
+    <MultiFilters list={category}/>
    
     
     </>

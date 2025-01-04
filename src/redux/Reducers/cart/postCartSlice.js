@@ -23,14 +23,36 @@ export const addToPostCartAsync = createAsyncThunk(
     }
   );
 
+  export const getCartDetails = createAsyncThunk(
+    "postCart/getCartDetails",
+    async ({ productsId, cartId,quantity,productsSkuId }) => {
+    //   const token = sessionStorage.getItem('jwtToken')
+      const response = await axios.post(
+        `http://localhost:8080/api/cartItem/add?cartId=${cartId}&productsId=${productsId}&productsSkuId=${productsSkuId}`,
+        { quantity },
+        {
+          // params: {
+          //   cartId,
+          //   productsId,
+          //   productsSkuId,
+          // },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
+        }
+      );
+      return response.data;
+    }
+  );
+
   export const updateCartItemQuantity = createAsyncThunk(
     'postCart/updateCartItemQuantity',
-    async ({ itemId, newQuantity }) => {
+    async ({ cartItemId, quantity }) => {
       // Send the updated quantity to the backend
-      const response = await axios.put(`http://localhost:8080/api/cartItem/${itemId}`, {
-        quantity: newQuantity,
+      const response = await axios.put(`http://localhost:8080/api/cartItem/${cartItemId}`, {
+        quantity,
       });
-      return { itemId, newQuantity };// Adjust as needed based on your API response
+      return { cartItemId, quantity };// Adjust as needed based on your API response
       // Adjust as needed based on your API response
     }
   );
@@ -97,13 +119,16 @@ const postCartSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+        
         .addCase(addToPostCartAsync.pending, (state) => {
           state.loading = true;
         })
+        
         .addCase(addToPostCartAsync.fulfilled, (state, action) => {
           state.loading = false;
              state.postCartItems.push(action.payload);
         })
+       
         .addCase(addToPostCartAsync.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
@@ -113,38 +138,46 @@ const postCartSlice = createSlice({
         .addCase(fetchPostCartItems.pending, (state) => {
           state.loading = true;
         })
+       
         .addCase(fetchPostCartItems.fulfilled, (state, action) => {
           state.loading = false;
           state.postCartItems = action.payload; // Update cartItems with fetched data
         })
+       
         .addCase(fetchPostCartItems.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
         })
+       
         .addCase(deletePostCartItems.pending, (state) => {
           state.loading = true;
         })
+       
         .addCase(deletePostCartItems.fulfilled, (state, action) => {
           state.loading = false;
           state.postCartItems = state.postCartItems.filter(
             item => item.id !== action.payload
           );
         })
+        
         .addCase(deletePostCartItems.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
         })
+        
         .addCase(updateCartItemQuantity.pending, (state) => {
           state.loading = true;
         })
+        
         .addCase(updateCartItemQuantity.fulfilled, (state, action) => {
          
-          const { itemId, newQuantity } = action.payload;
-          const item = state.postCartItems.find(item => item.id === itemId);
+          const { cartItemId, quantity  } = action.payload;
+          const item = state.postCartItems.find(item => item.id === cartItemId);
           if (item) {
-            item.quantity = newQuantity; // Update the quantity in the state
+            item.quantity = quantity; // Update the quantity in the state
           }
         })
+       
         .addCase(updateCartItemQuantity.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;

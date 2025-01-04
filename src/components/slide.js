@@ -2,6 +2,7 @@ import React,{ useEffect,Component } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import {getCategory} from '../redux/Reducers/categories/CategoryApi';
 import StatusCode from "../redux/utils/StatusCode";
+import { useNavigate } from 'react-router-dom';
 
 
 function Slide(){
@@ -14,7 +15,7 @@ function Slide(){
     Electronics: "/assets/images/laptop.jpg",
     Furnitures: "/assets/images/furniture.png",
     Appliances: "/assets/images/appliances.jpg",
-    Fashion:"/assets/images/portrait-smiling-beautiful-girl-her-handsome-boyfriend-laughing-happy-cheerful-couple-sunglasses.jpg",
+    FashionStore:"/assets/images/portrait-smiling-beautiful-girl-her-handsome-boyfriend-laughing-happy-cheerful-couple-sunglasses.jpg",
     Beauty:"/assets/images/cute-5157056_1280.jpg",
     Kitchen:"/assets/images/pexels-zvolskiy-2062426.jpg",
     Travel:"/assets/images/pexels-freestockpro-1008155.jpg",
@@ -23,6 +24,9 @@ function Slide(){
   const dispatch = useDispatch();
 
     const {categories,status } = useSelector(state => state.category);
+
+    const navigate = useNavigate(); // Use the `useNavigate` hook
+
     // console.log();
     // const id =props.parentId;
 
@@ -38,6 +42,12 @@ function Slide(){
   
  },[dispatch]);
 
+
+ const handleCategoryClick = (categoryName) => {
+  console.log(categoryName);
+  
+  navigate('/prolist',{ state: { categoryName } }); // Correct usage of navigate
+};
 
 
   if(status===StatusCode.LOADING){
@@ -55,24 +65,32 @@ function Slide(){
 
    const cat = categories.map((category)=>(
 
-    <>
+    
 
 
-    <div className="circle1"> <img  src={categoryImages[category.name]} 
-        alt={category.categoryName} 
-        value={category.categoryName} /><span>{category.name
-    }</span></div>
+    <div className="circle1">
+      
+       <img  src={categoryImages[category.name]} 
+             onClick={() => handleCategoryClick(category.name)} // Call handleCategoryClick on click
+
+             alt={category.name} 
+             value={category.categoryName} />
+        <span>{category.name}</span>
+    
+    </div>
       
       
-    </>
+    
 
   ));
 return(
  <div>
     <div className="sl">
 
- 
-      {cat}
+      
+      {cat }
+      
+
        {/* <div className="circle1"> <img src="assets/images/OIP (14).jpeg" alt="" value="hbdc"/><span></span></div>
       
       <div className="circle1"> <img src="assets/images/phones.png" alt="" value="hbdc"/><span>Mobile</span></div>

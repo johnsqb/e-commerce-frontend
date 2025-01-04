@@ -48,18 +48,21 @@ const Register = () => {
         const response = productResponse;
         
         
-        if (response.message === 'success') {
+        if (response.message === 'success' & response.role==='CUSTOMER') {
 
             await dispatch(addUserToCart(response.user_id))
             
+            
+            }
+
             Swal.fire({
-                icon: 'success',
-                title: 'Sucess ',
-                text: 'please login to continue..',
-              });
+              icon: 'success',
+              title: 'Sucess ',
+              text: 'please login to continue..',
+            });
             // Redirect to the login page
             window.location.href = '/login'; // or use `useNavigate` from react-router-dom
-          } 
+          
     }
         catch (error) {
             console.error("Failed to add User", error);

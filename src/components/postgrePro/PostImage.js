@@ -34,7 +34,6 @@ const PostImage = (props) => {
 
 
    
-        
         navigate(`/postproduct-details/${id}`,{ state: { url } })
         
        
@@ -48,7 +47,7 @@ const PostImage = (props) => {
             <a>
             <img  src={`${BASE_URL}${filePath}`} 
               alt="product-item" style={{width:'100%',height:'160px',objectFit:'contain',marginBottom:'10px',cursor:'pointer'}} className="imgs"  
-              onClick={()=>handleClick(id,image)}  />
+              onClick={()=>handleClick(id,image)} />
             </a>
 
 

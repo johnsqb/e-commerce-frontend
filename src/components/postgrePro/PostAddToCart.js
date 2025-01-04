@@ -4,8 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToPostCartAsync } from '../../redux/Reducers/cart/postCartSlice';
+import { fetchPostCartItems } from '../../redux/Reducers/cart/postCartSlice';
 
 const PostAddToCart = (props) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -15,6 +17,8 @@ const PostAddToCart = (props) => {
   const [deliveryAvailable, setDeliveryAvailable] = useState(null);
   const [loading, setLoading] = useState(false);
   
+  const cartId = sessionStorage.getItem('CartId');
+
   useEffect(() => {
 
 
@@ -35,8 +39,14 @@ const PostAddToCart = (props) => {
     }
   }, [isAuthenticated, token]);
   
+    const cartItems = useSelector((state) => state.postCart.postCartItems) || { cart: [] };
+  
+    useEffect(() => {
+          dispatch(fetchPostCartItems({ cartId }));
+        }, [dispatch, cartId,cartItems.length]);
 
-
+    console.log(cartItems);
+    
   const checkPincodeDelivery = async (productId, pinCode) => {
     
 
@@ -84,8 +94,15 @@ const PostAddToCart = (props) => {
   };
 
   const handleAddToCart = async (product, quantity) => {
+
+    const productExists = cartItems.some(cartProduct => cartProduct.products.id === product.id);
+    if (productExists) {
+      alert("Product already added.. go to cart to change quantity");
+      return;
+    }
     
-    console.log(product.productsSkus[0]+" "+quantity);
+    
+    console.log(product.productsSkus[0]+" "+quantity+" quantity");
     const skuid = product.productsSkus[0].id;
     
     if (!isAuthenticated) {
@@ -104,7 +121,7 @@ const PostAddToCart = (props) => {
 
       try {
 
-        await dispatch(addToPostCartAsync({
+       const response =  await dispatch(addToPostCartAsync({
 
           productsId: product.id,
           cartId: sessionStorage.getItem('CartId'), // You may want to dynamically fetch or manage this cartId
@@ -113,7 +130,12 @@ const PostAddToCart = (props) => {
 
       }));
 
+      console.log(response.payload);
+
+      if (response.payload==="Success"){
+      
         alert("Product added to cart");
+      }
 
       } catch (error) {
 

@@ -1,8 +1,10 @@
 import {jwtDecode} from 'jwt-decode';
 import axios from 'axios';
 import { logDOM } from '@testing-library/react';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getUserCart = async () => {
+export const getUserCart = 
+  async () => {
    console.log("hi welconme to find cartId");
    const cartId = sessionStorage.getItem('Id')
 
@@ -26,6 +28,7 @@ export const getUserCart = async () => {
     
   
       console.log('User details saved to sessionStorage:', userDetails);
+      return userDetails;
     } catch (error) {
       console.error('Error fetching user details:', error);
     }

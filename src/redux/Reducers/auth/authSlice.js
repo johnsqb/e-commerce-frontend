@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import {getCurrentUserDetails} from "./CurrentUser"
+import Cookies from "js-cookie";
+
 const storedToken = sessionStorage.getItem('jwtToken');
 
 const initialState = {
@@ -76,6 +78,10 @@ export const login = (email, password) => async (dispatch) => {
 
     
     dispatch(authSuccess({ token }));
+
+    // Cookies.set('jwtToken', token, { expires: 7, secure: true, sameSite: 'strict' }); // Cookie expires in 7 days
+    // document.cookie = `userDetails=${JSON.stringify(userDetails)}; path=/; secure; SameSite=Strict`;
+
     sessionStorage.setItem('jwtToken', token); // Store token in localStorage
 
     // console.log('Calling getCurrentUserDetails with token:', token); // Add this line to check if the function is being called

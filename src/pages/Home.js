@@ -65,6 +65,7 @@ const Home = () => {
     
  
     <Slide/>
+    
        <Carousell /> 
       {/* <ShopPro/> */}
       <MultiCarousell/>

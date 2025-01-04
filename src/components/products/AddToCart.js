@@ -39,7 +39,7 @@ const AddToCart = (props) => {
       navigate('/login');
     } else {
       if (role === "ROLE_USER") {
-        dispatch(addToCartAsync({ product_id: product.id, quantity }));
+        // dispatch(addToCartAsync({ product_id: product.id, quantity }));
         
         // alert("product added to cart");
         

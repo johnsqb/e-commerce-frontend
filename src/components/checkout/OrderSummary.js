@@ -23,13 +23,19 @@ const OrderSummary = () => {
 console.log(cartItems);
 
   const handleRemoveItem = (itemId) => {
+
     dispatch(deletePostCartItems({ product_id: itemId })); // Ensure you're passing the correct payload
+
 };
 
 
-  const handleQuantityChange = (itemId, newQuantity) => {
-    if (newQuantity > 0) { // Prevent quantity from being less than 1
-      dispatch(updateCartItemQuantity({ itemId, newQuantity }));
+  const handleQuantityChange = (cartItemId, quantity) => {
+
+    if (quantity > 0) { // Prevent quantity from being less than 1
+
+      
+      
+      dispatch(updateCartItemQuantity({ cartItemId, quantity }));
     }
   };
 
@@ -68,12 +74,14 @@ console.log(cartItems);
                 
 
                   <div className="product-quantity">
+
                     <button 
                       className="quantity-button"
                       onClick={() => decrementQuantity(item.id, item.quantity)}
                     >
                       -
                     </button>
+
                     <input 
                       type="number" 
                       value={item.quantity}
@@ -82,12 +90,14 @@ console.log(cartItems);
                       className="quantity-input small-input"
                       // style={{ appearance: 'textfield' }} // Removes the default browser arrows
                     />
+
                     <button 
                       className="quantity-button"
                       onClick={() => incrementQuantity(item.id, item.quantity)}
                     >
                       +
                     </button>
+
                     </div>
                 </div>
                 <div className="product-details">
@@ -103,7 +113,7 @@ console.log(cartItems);
                 <button 
                   className="remove-button" 
                   onClick={() => handleRemoveItem(item.id)}
-                >
+                > 
                   Remove
                 </button>
                  </div>

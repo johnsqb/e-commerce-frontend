@@ -31,6 +31,8 @@ import MultiFilters from './MultiFilters.js';
 import Unauthorized from './components/Unauthorized.js';
 import Success from './components/Success.js';
 import Register from './pages/Register.js';
+import CartSummary from './components/CartSummary.js';
+import CartsSummarys from './components/CartsSummarys.js';
 
 function App() {
 
@@ -50,9 +52,9 @@ function App() {
         <Route index element={<Home />} />
 
       
-            <Route   path='/product-details/:id'   element={<ProductView />} />
-            <Route   path='/postproduct-details/:id'  index element={<PostProductView />} />
-            <Route   path='/checkout'   element={<CheckOutPage />} />
+            <Route path='/product-details/:id'   element={<ProductView />} />
+            <Route path='/postproduct-details/:id'  index element={<PostProductView />} />
+            <Route path='/checkout'   element={<CheckOutPage />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
             <Route path="/success" element={<Success />} />
             <Route path="/reg" element={<Register />} />
@@ -64,6 +66,8 @@ function App() {
 
           >
             <Route index element={<Cart />} />
+            
+
           </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/prolist' element={<ProductList />} />   {/*product list new*/}

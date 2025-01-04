@@ -26,7 +26,7 @@ const ProductSIngle = (props) => {
 			<div className="row">
 			<PostSelectedImage image={image}/>
 			<PostSelectedDetails  mrpprice={selectedPro.mrpPrice} sellingprice={selectedPro.price}
-								 name={selectedPro.name} desc={selectedPro.description} pro={selectedPro}/> 
+								 name={selectedPro.name} desc={selectedPro.description} pro={selectedPro} /> 
 			
 			{/* <SelectedImage  image={image}/>
 				 {/* <SelectedImage  images={selectedPro.images}/> 

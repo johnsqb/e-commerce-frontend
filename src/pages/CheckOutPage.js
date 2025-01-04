@@ -73,20 +73,7 @@ const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
   }
 
   const handleCancel = () => {
-    // setFirstName(originalFirstName);
-    
-    // setLastName(originalLastName); // Revert changes to original value
-
-    // setAddressLine1(originalAddressLine1); // Revert changes to original value
-    
-    // setAddressLine2(originalAddressLine2); // Revert changes to original value
    
-    // setPhoneNumber(originalPhoneNumber); // Revert changes to original value
-    
-    // setCity(originalCity); // Revert changes to original value
-   
-    // setPostalCode(originalPostalCode); // Revert changes to original value
-    // Revert changes to original value
     handleEditToggle();
   };
 
@@ -126,12 +113,7 @@ const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 
     <AddressList/>
     
-
-
-
-    
-    
-      <OrderSummary/>
+    <OrderSummary/>
 
 
 

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import React from 'react'
 import { deleteCartItems,fetchCartItems } from '../../redux/Reducers/cart/CartSlice';
 import { fetchPostCartItems,deletePostCartItems } from '../../redux/Reducers/cart/postCartSlice';
@@ -6,11 +7,20 @@ import { useDispatch } from 'react-redux';
 const RemoveFromCart = (props) => {
 
   const dispatch = useDispatch();
+  const cartId = sessionStorage.getItem('CartId');
+
+    // useEffect(() => {
+    //   const displayTotal = async () => {
+    //     await dispatch(fetchPostCartItems({ cartId }));
+    //   };
+      
+    //   displayTotal();
+    //   }, [dispatch, cartId]);
 
   const RemoveCart = async(product) => {
 
 
-    console.log(product);
+    console.log(product+" product removed");
     console.log(product.id);
 
 
@@ -19,11 +29,13 @@ const RemoveFromCart = (props) => {
     //   navigate('/login');
     // } else {
     //   if (role === "ROLE_USER") {
-        dispatch(deletePostCartItems({ product_id: product}));
-        
-        alert("product removed from cart");
-        dispatch(fetchPostCartItems());
+       await dispatch(deletePostCartItems({ product_id: product}));
 
+       await dispatch(fetchPostCartItems());
+
+        // alert("product removed from cart");
+
+        
 
           
     //     }

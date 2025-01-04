@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick.css'
 import { getProductsStatus, selectAllProducts } from '../redux/Reducers/postgreProduct/PostgreProductSlice'
 import { fetchPostgreProducts } from '../redux/Reducers/postgreProduct/PostgreproductApi'
 import PostImage from "./postgrePro/PostImage"
-import PostProductDetails from "./postgrePro/PostProductDetails"
+import PostProductDetails from "./postgrePro/PostProductDetails";
 
 
 const PreviousBtn=(props)=>{

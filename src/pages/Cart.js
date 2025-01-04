@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,18 +14,36 @@ import CartProductDetails from '../components/cart/CartProductDetails';
 import RemoveFromCart from '../components/cart/RemoveFromCart';
 import Slide from '../components/slide';
 import { fetchPostCartItems } from '../redux/Reducers/cart/postCartSlice';
-
+import { getUserFromCart } from '../redux/Reducers/cart/CartSlice';
+import { getUserCart } from '../redux/Reducers/cart/CartIdApi';
 const Cart = () => {
+  
   const cartId = sessionStorage.getItem('CartId');
+
   const dispatch = useDispatch();
 
+
+
+
+
   useEffect(() => {
-    dispatch(fetchPostCartItems({ cartId }));
+
+    console.log("get cart for total");
+    
+   const response = dispatch(getUserFromCart());
+
+   console.log(response+" inside cart table");
+   
+
   }, [dispatch, cartId]);
 
   const cartItems = useSelector((state) => state.postCart.postCartItems) || { cart: [] };
-  const cart = cartItems || [];
-  
+ 
+    useEffect(() => {
+      dispatch(fetchPostCartItems({ cartId }));
+    }, [dispatch, cartId,cartItems.length]);
+    const cart = cartItems || [];
+    
   // Calculate total amount
   const totalAmount = cartItems.length > 0 && cartItems[0].cart ? cartItems[0].cart.total : "0";
 
@@ -55,6 +72,8 @@ const Cart = () => {
                           productName={product.products?.name || "Unknown Product"}
                           price={product.products?.price}
                           pro={product.products?.id}
+                          id={product.id}
+                          cartId={cartId}
                           quantity={product.quantity}
                         />
                         <RemoveFromCart product={product.id} />

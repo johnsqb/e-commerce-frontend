@@ -1347,7 +1347,12 @@ input
   padding: 20px;
   display: flex;
   justify-content: center;
-  cursor: pointer;
+  /* cursor: pointer; */
+}
+.noCategory{
+
+  padding-top: 80px;
+
 }
 .circle1{
   background-color:#edf1f3;
